@@ -1,0 +1,105 @@
+/* Link reset */
+
+.link-rest {
+	color: inherit;
+}
+
+.link_reset:link {
+	color: inherit;
+}
+
+/* visited link */
+.link_reset:visited {
+	color: inherit;
+}
+
+/* mouse over link */
+.link_reset:hover {
+	color: inherit;
+}
+
+/* selected link */
+.link_reset:active {
+	color: inherit;
+}
+
+.landing_page {
+	display: flex;
+	flex-flow: row nowrap;
+}
+.content_section {
+	display: flex;
+	flex-flow: column nowrap;
+	padding: 7.2rem 0 7.2rem 12rem;
+	width: 100%;
+	color: #001833;
+}
+
+.app_name {
+	color: var(--COLOR-PRIMARY-DARK-THEME);
+	margin-bottom: 10rem;
+}
+
+.app_tagline {
+	margin-bottom: 3rem;
+}
+
+.app_decription {
+	margin-bottom: 18rem;
+	max-width: 70rem;
+	font-style: italic;
+}
+
+.authbtn {
+	max-width: fit-content;
+	padding: 8px 4rem;
+	font-size: 2rem;
+	margin-left: 1.2rem;
+}
+
+.content_section .authlink {
+	max-width: fit-content;
+	padding: 1rem 2px;
+	text-decoration: none;
+	color: var(--COLOR-TXT);
+}
+
+.authlink:link {
+	color: var(--COLOR-TXT);
+}
+
+.authlink:hover {
+	color: var(--COLOR-PRIMARY-THEME);
+}
+
+/* Colors */
+
+.color--primary {
+	color: var(--COLOR-TXT-PRIMARY);
+	background-color: inherit;
+}
+
+.color--primary_dark {
+	color: var(--COLOR-PRIMARY-DARK-THEME);
+	background-color: inherit;
+}
+
+.hero_section {
+	padding: 3rem 1rem;
+	padding-left: 15rem;
+	width: 100%;
+}
+
+.hero_img {
+	height: 87vh;
+}
+
+.theme_Btn {
+	position: absolute;
+	top: 2rem;
+	right: 2rem;
+}
+
+.theme_Btn .bx {
+	font-size: 4rem;
+}
