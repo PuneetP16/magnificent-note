@@ -1,0 +1,27 @@
+@import url("https://magnificentui.netlify.app/src/magnificent.css");
+
+.body {
+	background-color: var(--COLOR-BG);
+	display: grid;
+	min-height: 100vh;
+	grid-template-columns: 1fr;
+	grid-template-rows: 7rem 1fr 5.2rem;
+	grid-template-areas:
+		"header"
+		"main"
+		"footer";
+	transition: all 0.3s ease-in;
+}
+
+.landing {
+	background-color: var(--COLOR-BG);
+	display: grid;
+	grid-template-columns: 1fr;
+	grid-template-rows: 100vh;
+	grid-template-areas: "main";
+	transition: all 0.3s ease-in;
+}
+
+.main {
+	grid-area: main;
+}
