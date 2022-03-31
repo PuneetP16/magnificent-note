@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { useLocation } from "react-router-dom";
 import { ThemeToggle } from "../../ThemeToggle/ThemeToggle";
 import { useAuth } from "../../../../contexts";
+import { bxIcons } from "../../../../data/icons";
 
 export const CTA = () => {
 	const { isAuth, toggleAuth } = useAuth();
@@ -21,13 +22,7 @@ export const CTA = () => {
 	const getBtnName = (() =>
 		isAuth ? "Logout" : pathname === "/login" ? "Sign Up" : "Login")();
 	const getBtnIcon = (() =>
-		isAuth ? (
-			<i className="bx bx-log-out"></i>
-		) : isLoginPage ? (
-			<i className="bx bx-user-plus"></i>
-		) : (
-			<i className="bx bx-log-in"></i>
-		))();
+		isAuth ? bxIcons.logout : isLoginPage ? bxIcons.userPlus : bxIcons.login)();
 	const getLinkPath = (() =>
 		isAuth ? "/" : pathname === "/login" ? "/signup" : "/login")();
 

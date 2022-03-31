@@ -5,7 +5,6 @@ export const SearchBox = () => {
 	const { pathname } = useLocation();
 	const visibility = (() =>
 		pathname === "/login" || pathname === "/signup" ? "invisible" : "")();
-    console.log(visibility)
 	const onClickSearchHandler = (e) => e.preventDefault();
 	return (
 		<form className={`search_box ${visibility}`} method="get">

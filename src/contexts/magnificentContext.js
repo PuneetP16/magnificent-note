@@ -14,13 +14,13 @@ export const MagnificentProvider = ({ children }) => {
 	return (
 		<MagnificentContext.Provider value={value}>
 			<BrowserRouter>
-				<UserProvider>
-					<AuthProvider>
+				<AuthProvider>
+					<UserProvider>
 						<ThemeProvider>
 							<LoaderProvider>{children}</LoaderProvider>
 						</ThemeProvider>
-					</AuthProvider>
-				</UserProvider>
+					</UserProvider>
+				</AuthProvider>
 			</BrowserRouter>
 		</MagnificentContext.Provider>
 	);

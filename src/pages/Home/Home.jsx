@@ -1,39 +1,44 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Aside, NoteEditor, NoteListing } from "../../components";
 import "./Home.css";
+import { useState } from "react";
 
 export const Home = () => {
+	const [isPaletteVisible, setIsPaletteVisible] = useState(false);
+
+	const removeModalHandler = (e) => {
+		const isPaletteIcon = e.target.className === "bx bx-palette";
+		const isPalette = e.target.className === "note__palette";
+
+		if (isPaletteIcon) {
+			setIsPaletteVisible((w) => !w);
+		}
+
+		if (isPaletteVisible) {
+			if (!isPalette) {
+				setIsPaletteVisible((w) => !w);
+			}
+			if (isPalette) {
+				setIsPaletteVisible(true);
+			}
+			if (isPaletteIcon) {
+				setIsPaletteVisible((w) => !w);
+			}
+		}
+	};
+
 	return (
-		<div className="home_page">
+		<div onClick={(e) => removeModalHandler(e)} className="home_page">
 			<main className="main--home_page">
-				<aside className="nav notes_nav">
-					<ul className="nav__items">
-						<Link to="" className="nav__list_item">
-							<i className="bx bx-home"></i>
-							<span className="nav__item">Home</span>
-						</Link>
-						<Link to="" className="nav__list_item">
-							<i className="bx bx-label"></i>
-							<span className="nav__item">Labels</span>
-						</Link>
-						<Link to="" className="nav__list_item">
-							<i className="bx bx-archive-in"></i>
-							<span className="nav__item">Archive</span>
-						</Link>
-						<Link to="" className="nav__list_item">
-							<i className="bx bx-trash-alt"></i>
-							<span className="nav__item">Trash</span>
-						</Link>
-						<Link to="" className="nav__list_item">
-							<i className="bx bx-user-circle"></i>
-							<span className="nav__item">Profile</span>
-						</Link>
-					</ul>
-				</aside>
-				<section className="note_section_container">
-					<div className="note_action_container">
-						<div>New Note</div>
-						<div>List of Notes</div>
+				<Aside />
+				<section className="note_section">
+					<div className="note_container">
+						<div>Pinned</div>
+						<NoteEditor
+							isPaletteVisible={isPaletteVisible}
+							setIsPaletteVisible={setIsPaletteVisible}
+						/>
+						<NoteListing />
 					</div>
 				</section>
 			</main>

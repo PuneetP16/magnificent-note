@@ -5,8 +5,7 @@ export const signIn = async ({
 	dispatch,
 	initialFormState,
 	toggleAuth,
-	toggleShow,
-	setStatusMsg,
+	setAlert,
 	rememberMe,
 	toggleLoader,
 }) => {
@@ -39,24 +38,31 @@ export const signIn = async ({
 			toggleLoader();
 		}
 
-		// if (res.status === 201) {
-		// 	setStatusMsg("Invalid Password, Try Again");
-		// 	toggleShow();
-		// 	toggleLoader();
-		// 	return;
-		// }
+		if (res.status === 201) {
+			setAlert((a) => ({
+				...a,
+				text: "Invalid Password, Try Again",
+				type: "alert--danger",
+				visibility: true,
+			}));
+			toggleLoader();
+			return;
+		}
 	} catch (error) {
 		console.log(error, "Invalid Credentials");
 		let msg = JSON.stringify(error);
 		let parsedMsg = JSON.parse(msg);
-		console.log(parsedMsg.status);
-		const something =
+		const alertText =
 			parsedMsg.status === 404
 				? "Email Address doesn't Exist, Please Signup"
 				: "Server Error, Try Again";
 
-		toggleShow();
-		setStatusMsg(something);
+		setAlert((a) => ({
+			...a,
+			text: alertText,
+			type: "alert--danger",
+			visibility: true,
+		}));
 		// "Invalid Details / Server Error, Try Again"
 		toggleLoader();
 	}

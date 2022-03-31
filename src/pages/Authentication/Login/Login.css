@@ -12,16 +12,6 @@
 	gap: 1rem;
 }
 
-.alert {
-	width: 50rem;
-	border: 0;
-}
-
-.alert i {
-	color: var(--COLOR-WHITE);
-	font-size: 1.5rem;
-}
-
 a {
 	text-decoration: none;
 	color: inherit;
