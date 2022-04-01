@@ -1,0 +1,134 @@
+:root {
+	--COLOR-NOTE-BG-RED: rgb(255, 168, 168);
+	--COLOR-NOTE-BG-BLUE: rgb(138, 187, 252);
+	--COLOR-NOTE-BG-GREEN: rgb(168, 255, 190);
+	--COLOR-NOTE-BG-YELLOW: rgb(255, 254, 168);
+	--COLOR-NOTE-BG-PURPLE: rgb(250, 186, 250);
+	--COLOR-NOTE-BG-CYAN: rgb(138, 229, 252);
+}
+
+.note__red {
+	background-color: var(--COLOR-NOTE-BG-RED);
+}
+.note__green {
+	background-color: var(--COLOR-NOTE-BG-GREEN);
+}
+
+.note__yellow {
+	background-color: var(--COLOR-NOTE-BG-YELLOW);
+}
+.note__purple {
+	background-color: var(--COLOR-NOTE-BG-PURPLE);
+}
+
+.note__blue {
+	background-color: var(--COLOR-NOTE-BG-BLUE);
+}
+
+.note__cyan {
+	background-color: var(--COLOR-NOTE-BG-CYAN);
+}
+
+.note__palette {
+	position: absolute;
+	display: flex;
+	width: 10rem;
+	list-style-type: none;
+	flex-flow: row wrap;
+	background-color: var(--COLOR-PRIMARY-DARK);
+	padding: 5px;
+	border-radius: 8px;
+	gap: 8px;
+	bottom: 2.5rem;
+	right: 2rem;
+}
+
+.note__palette li {
+	cursor: pointer;
+	width: 2.4rem;
+	height: 2.4rem;
+	border-radius: 50%;
+}
+
+.note__palette_wrapper {
+	position: relative;
+}
+
+.note {
+	min-height: 5rem;
+	width: 50rem;
+	border-radius: 8px;
+	padding: 1rem;
+	padding-bottom: 2px;
+}
+
+.btn__pin_it {
+	position: absolute;
+	display: flex;
+	justify-content: flex-end;
+	font-size: 2.4rem;
+	right: 1rem;
+	top: 1rem;
+	background-color: inherit;
+}
+
+.note__body {
+	width: 100%;
+}
+
+.note__form {
+	width: 100%;
+}
+
+.note__heading {
+	width: 100%;
+	background-color: inherit;
+	outline: none;
+	border: 0;
+}
+
+.note__textarea {
+	background-color: inherit;
+	width: 100%;
+	outline: none;
+	border: 0;
+}
+
+.note__heading:focus,
+.note__textarea:focus,
+select:focus {
+	outline: none;
+	border: 0;
+	background-color: inherit;
+	font-weight: 500;
+}
+
+.note__footer {
+	display: flex;
+	align-items: center;
+}
+
+.note__created_date {
+	font-weight: 200;
+}
+
+.note__cta {
+	display: flex;
+	justify-content: space-evenly;
+	gap: 1rem;
+}
+
+.note__cta {
+	margin-left: auto;
+}
+
+.btn_note__cta {
+	cursor: pointer;
+	background-color: inherit;
+	border: none;
+	font-size: 2.4rem;
+	padding: 0;
+	height: fit-content;
+	display: grid;
+	place-content: center;
+}

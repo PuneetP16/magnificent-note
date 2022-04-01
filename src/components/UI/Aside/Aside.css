@@ -1,0 +1,36 @@
+.nav,
+.notes_nav {
+	display: flex;
+	flex-flow: column nowrap;
+	flex-basis: 20%;
+}
+
+.nav__items {
+	margin-left: 12rem;
+	display: flex;
+	flex-flow: column nowrap;
+	list-style-type: none;
+	gap: 1rem;
+	padding-top: 1.5rem;
+	color: var(--COLOR-TXT);
+	/* ul */
+}
+
+.nav__list_item {
+	display: flex;
+	font-size: 2rem;
+	align-items: center;
+	gap: 1rem;
+	/* li */
+}
+
+.nav__list_item:hover {
+	color: var(--COLOR-PRIMARY);
+}
+
+/* .notes_nav i {
+} */
+
+/* .notes_nav .nav__item { */
+	/* text */
+/* } */

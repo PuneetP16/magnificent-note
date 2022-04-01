@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { useState } from "react";
 import {
+	Alert,
 	InputTypeOne,
 	InputTypeThree,
 	InputTypeTwo,
@@ -12,17 +13,17 @@ import { signIn } from "../../../services";
 
 export const Login = () => {
 	useDocumentTitle("Login | MS");
-	const { loginData, dispatch, initialFormState } = useUser();
+	const { loginData, userData, dispatch, initialFormState } = useUser();
 	const { toggleAuth } = useAuth();
 	const [rememberMe, setRememberMe] = useState(false);
 	const [isVisible, setIsVisible] = useState(false);
-	const [show, setShow] = useState(false);
-	const [statusMsg, setStatusMsg] = useState("");
-	const { toggleLoader } = useLoader();
 
-	const toggleShow = () => {
-		setShow((e) => !e);
-	};
+	const [alert, setAlert] = useState({
+		visibility: false,
+		text: "",
+		type: "",
+	});
+	const { toggleLoader } = useLoader();
 
 	const toggleRememberMe = () => {
 		setRememberMe((rememberMe) => !rememberMe);
@@ -45,33 +46,17 @@ export const Login = () => {
 			dispatch,
 			initialFormState,
 			toggleAuth,
-			toggleShow,
-			setStatusMsg,
+			setAlert,
 			rememberMe,
 			toggleLoader,
+			userData,
 		});
 	};
-
-	// const statusMsg = (() => {
-	// 	error ? "toggleError"
-	// })();
 
 	return (
 		<main>
 			<div className="center">
-				{show ? (
-					<div className="alerts flex-col-align-center fw">
-						<div className="alert alert--danger alert--dismissable">
-							{statusMsg}
-							<button
-								onClick={() => setShow((s) => !s)}
-								className="btn btn--icon btn--close--transparent alert--btn__dismiss btn--circular"
-							>
-								<i className="bx bx-x"></i>
-							</button>
-						</div>
-					</div>
-				) : null}
+				<Alert alert={alert} setAlert={setAlert} />
 				<form onSubmit={onSubmitHandler} className="form flex" method="get">
 					<h2 className="h3">Login</h2>
 					<InputTypeOne

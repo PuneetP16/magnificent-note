@@ -1,0 +1,15 @@
+export const bxIcons = {
+	home: <i className="bx bx-home"></i>,
+	userCircle: <i className="bx bx-user-circle"></i>,
+	userPlus: <i className="bx bx-user-plus"></i>,
+	trash: <i className="bx bx-trash"></i>,
+	trashAlt: <i className="bx bx-trash-alt"></i>,
+	archive: <i className="bx bx-archive"></i>,
+	archiveIn: <i className="bx bx-archive-in"></i>,
+	label: <i className="bx bx-label"></i>,
+	palette: <i className="bx bx-palette"></i>,
+	pin: <i className="bx bx-pin"></i>,
+	pinned: <i className="bx bxs-pin"></i>,
+	login: <i className="bx bx-log-in"></i>,
+	logout: <i className="bx bx-log-out"></i>,
+};

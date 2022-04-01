@@ -1,0 +1,56 @@
+.content_section {
+	display: flex;
+	flex-flow: column nowrap;
+	padding: 7.2rem 0 7.2rem 12rem;
+	width: 100%;
+	color: #001833;
+}
+
+.app_name {
+	color: var(--COLOR-PRIMARY-DARK-THEME);
+	margin-bottom: 10rem;
+}
+
+.app_tagline {
+	margin-bottom: 3rem;
+}
+
+.app_decription {
+	margin-bottom: 18rem;
+	max-width: 70rem;
+	font-style: italic;
+}
+
+.authbtn {
+	max-width: fit-content;
+	padding: 8px 4rem;
+	font-size: 2rem;
+	margin-left: 1.2rem;
+}
+
+.content_section .authlink {
+	max-width: fit-content;
+	padding: 1rem 2px;
+	text-decoration: none;
+	color: var(--COLOR-TXT);
+}
+
+.authlink:link {
+	color: var(--COLOR-TXT);
+}
+
+.authlink:hover {
+	color: var(--COLOR-PRIMARY-THEME);
+}
+
+/* Colors */
+
+.color--primary {
+	color: var(--COLOR-TXT-PRIMARY);
+	background-color: inherit;
+}
+
+.color--primary_dark {
+	color: var(--COLOR-PRIMARY-DARK-THEME);
+	background-color: inherit;
+}

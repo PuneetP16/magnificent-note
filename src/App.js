@@ -7,11 +7,12 @@ import { useAuth, useLoader } from "./contexts";
 import { Home, Landing, Login, NotFound, SignUp } from "./pages";
 
 function App() {
+	
 	const { pathname } = useLocation();
 	const { isAuth } = useAuth();
 	const { loader } = useLoader();
-	const isLandingPage = (() => pathname === "/")();
-	const injectLanding = (() => (isLandingPage ? "landing" : ""))();
+	const isLandingPage = pathname === "/";
+	const injectLanding = isLandingPage ? "landing" : "";
 
 	return (
 		<div className={`App body ${injectLanding}`}>
