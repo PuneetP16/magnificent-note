@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import "./Alert.css";
 
 export const Alert = ({ alert, setAlert }) => {
@@ -8,6 +9,17 @@ export const Alert = ({ alert, setAlert }) => {
 		}));
 	};
 	const { text, visibility, type } = alert;
+
+	useEffect(() => {
+		const timerVar = setTimeout(() => {
+			setAlert((s) => ({
+				...s,
+				visibility: false,
+			}));
+		}, 2000);
+
+		return () => clearInterval(timerVar);
+	}, [setAlert]);
 
 	return visibility ? (
 		<div className="alerts flex-col-align-center fw">

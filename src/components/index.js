@@ -13,3 +13,5 @@ export { NoteEditor } from "./NoteEditor/NoteEditor";
 export { NoteListing } from "./NoteListing/NoteListing";
 export { ResizableTextArea } from "./UI/Input/ResizableTextArea";
 export { Modal } from "./UI/Modal/Modal";
+export { ColorPalette } from "./ColorPalette/ColorPalette";
+export { NoteListWrapper } from "./NoteListWrapper/NoteListWrapper";

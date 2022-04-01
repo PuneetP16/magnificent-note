@@ -13,6 +13,15 @@ html[current_theme="light"] {
 	--COLOR-CARD-BOX-SHADOW1: rgba(0, 0, 0, 0.56);
 	--COLOR-CARD-BOX-SHADOW2: #32325d1a;
 	--COLOR-CARD-BOX-SHADOW3: #324dc549;
+
+	/* Palette */
+	--COLOR-NOTE-BG-RED: rgb(255, 168, 168);
+	--COLOR-NOTE-BG-BLUE: rgb(138, 187, 252);
+	--COLOR-NOTE-BG-GREEN: rgb(168, 255, 190);
+	--COLOR-NOTE-BG-YELLOW: rgb(255, 254, 168);
+	--COLOR-NOTE-BG-PURPLE: rgb(250, 186, 250);
+	--COLOR-NOTE-BG-CYAN: rgb(138, 229, 252);
+	--COLOR-NOTE-BG: rgb(0, 30, 75);
 }
 
 html[current_theme="dark"] {
@@ -29,4 +38,13 @@ html[current_theme="dark"] {
 	--COLOR-CARD-BOX-SHADOW1: #ccd9faa9;
 	--COLOR-CARD-BOX-SHADOW2: #32325d1a;
 	--COLOR-CARD-BOX-SHADOW3: #324dc549;
+
+	/* Palette */
+	--COLOR-NOTE-BG-RED: #670000;
+	--COLOR-NOTE-BG-BLUE:  #033578;
+	--COLOR-NOTE-BG-GREEN:#376800;
+	--COLOR-NOTE-BG-YELLOW: #4D4D00;	
+	--COLOR-NOTE-BG-PURPLE: #590659;
+	--COLOR-NOTE-BG-CYAN: #036078;
+	--COLOR-NOTE-BG: rgb(12, 19, 61);
 }

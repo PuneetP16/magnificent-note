@@ -13,7 +13,6 @@ export const useAxios = () => {
 		};
 		try {
 			toggleLoader();
-
 			const res = await axios({ url, method, data, headers });
 			if (res.status === 200 || res.status === 201) {
 				output = res.data[resKey];

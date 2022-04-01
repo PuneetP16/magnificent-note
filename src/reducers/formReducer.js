@@ -1,15 +1,12 @@
 export const formReducer = ({ loginData, userData }, action) => {
 	switch (action.type) {
 		case "HANDLE_LOGIN_INPUT":
-			console.log("From input", action);
-
 			return {
 				loginData: { ...loginData, [action.field]: action.payload },
 				userData: { ...userData },
 			};
 
 		case "HANDLE_SUBMIT":
-			console.log("From submit", action);
 			let data = {
 				loginData: {
 					email: "adarshbalika@gmail.com",
