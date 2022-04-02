@@ -10,6 +10,7 @@ import { useUser, useAuth, useLoader } from "../../../contexts";
 import { useDocumentTitle } from "../../../customHooks";
 import "./Login.css";
 import { signIn } from "../../../services";
+import { bxIcons } from "../../../data/icons";
 
 export const Login = () => {
 	useDocumentTitle("Login | MS");
@@ -109,7 +110,7 @@ export const Login = () => {
 					<button className="form__login_btn btn btn--primary">Login</button>
 					<Link className="form__signup_btn btn btn--icon" to="/signup">
 						New here? Create New Account
-						<i className="bx bx-right-arrow-alt"></i>
+						{bxIcons.rightArrow}
 					</Link>
 				</form>
 			</div>

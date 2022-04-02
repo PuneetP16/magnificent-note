@@ -37,11 +37,11 @@ function App() {
 				<Route path="/mockman" element={<MockAPI />} />
 				<Route
 					path="/login"
-					element={isAuth ? <Navigate to="/" replace /> : <Login />}
+					element={isAuth ? <Navigate to="/home" replace /> : <Login />}
 				/>
 				<Route
 					path="/signup"
-					element={isAuth ? <Navigate to="/" replace /> : <SignUp />}
+					element={isAuth ? <Navigate to="/home" replace /> : <SignUp />}
 				/>
 				<Route path="/loader" element={<Loader />} />
 

@@ -1,30 +1,50 @@
 export const noteReducer = (noteState, action) => {
-	let { noteObj, noteList } = noteState;
+	let { noteObj, noteList, trashList, archiveList } = noteState;
 	let { type, payload } = action;
 
 	switch (type) {
 		case "INPUT_CHANGE":
-			const { key, value } = payload;
-			noteObj = { ...noteObj, [key]: value };
-			return { noteObj, noteList };
+			noteObj = { ...noteObj, ...payload };
+			return { noteObj, noteList, trashList, archiveList };
 
 		case "COLOR":
-			let { noteColor } = noteObj;
-			noteColor = payload;
-			noteObj = { ...noteObj, noteColor };
-			return { noteObj, noteList };
+			noteObj = { ...noteObj, noteColor: payload };
+			return { noteObj, noteList, trashList, archiveList };
 
 		case "SAVE":
 			noteList = [...payload];
-			return { noteObj, noteList };
+			return { noteObj, noteList, trashList, archiveList };
 
 		case "RESET":
-			noteObj = payload;
-			return { noteObj, noteList };
+			noteObj = { ...payload };
+			return { noteObj, noteList, trashList, archiveList };
 
 		case "UPDATE":
-			noteList = payload;
-			return { noteObj, noteList };
+			noteList = [...payload];
+			return { noteObj, noteList, trashList, archiveList };
+
+		case "DELETE":
+			noteList = [...payload];
+			trashList = [...trashList, action.note];
+			return { noteObj, noteList, trashList, archiveList };
+
+		case "RESTORE":
+			noteList = [...payload];
+			trashList = trashList.filter((note) => note._id !== action.note._id);
+			return { noteObj, noteList, trashList, archiveList };
+
+		case "ARCHIVE":
+			archiveList = [...payload];
+			noteList = [...action.notes];
+			return { noteObj, noteList, trashList, archiveList };
+
+		case "DELETE_FROM_ARCHIVE":
+			archiveList = [...payload];
+			return { noteObj, noteList, trashList, archiveList };
+
+		case "EDITABLE":
+			noteObj = { ...payload };
+			return { noteObj, noteList, trashList, archiveList };
 
 		default:
 			return noteState;

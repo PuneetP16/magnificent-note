@@ -7,16 +7,9 @@ export const signUp = async ({
 	userData,
 	dispatch,
 }) => {
-	console.log({ signUpData, navigate, loginData, userData, dispatch });
 	try {
 		const res = await axios.post("/api/auth/signup", signUpData);
 		if (res.status === 201) {
-			console.log("SUCCESS", {
-				signUpData,
-				navigate,
-				loginData,
-				dispatch,
-			});
 			dispatch({
 				type: "HANDLE_SUBMIT",
 

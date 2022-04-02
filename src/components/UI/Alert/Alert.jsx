@@ -1,4 +1,5 @@
 import { useEffect } from "react";
+import { bxIcons } from "../../../data/icons";
 import "./Alert.css";
 
 export const Alert = ({ alert, setAlert }) => {
@@ -18,8 +19,8 @@ export const Alert = ({ alert, setAlert }) => {
 			}));
 		}, 2000);
 
-		return () => clearInterval(timerVar);
-	}, [setAlert]);
+		return () => clearTimeout(timerVar);
+	}, [setAlert, alert.visibility]);
 
 	return visibility ? (
 		<div className="alerts flex-col-align-center fw">
@@ -29,7 +30,7 @@ export const Alert = ({ alert, setAlert }) => {
 					onClick={onClickHandler}
 					className="btn btn--icon btn--close--transparent alert--btn__dismiss btn--circular"
 				>
-					<i className="bx bx-x"></i>
+					{bxIcons.cross}
 				</button>
 			</div>
 		</div>

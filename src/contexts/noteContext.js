@@ -1,4 +1,5 @@
 import { useContext, createContext, useReducer } from "react";
+import { useState } from "react";
 import { noteReducer } from "../reducers";
 
 const NoteContext = createContext();
@@ -6,71 +7,29 @@ const NoteContext = createContext();
 export const useNote = () => useContext(NoteContext);
 
 export const NoteProvider = ({ children }) => {
-	const palette = [
-		{ color: "red", className: "note__red" },
-		{ color: "blue", className: "note__blue" },
-		{ color: "green", className: "note__green" },
-		{ color: "yellow", className: "note__yellow" },
-		{ color: "purple", className: "note__purple" },
-		{ color: "cyan", className: "note__cyan" },
-	];
-
-	const current = new Date();
-	const currentDate = `${current.getDate()}/${
-		current.getMonth() + 1
-	}/${current.getFullYear()}`;
+	const currentDate = new Date().toLocaleDateString();
 
 	const inititalNoteObj = {
 		title: "",
-		body: "",
 		noteColor: "note__blue",
 		dateCreated: currentDate,
-		isTrash: false,
 		isPinned: false,
 	};
 
 	const initialNoteState = {
-		noteList: [
-			{
-				title: "This is Title",
-				body: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s ",
-				noteColor: "note__blue",
-				dateCreated: currentDate,
-				_id: "7106fe2e-a8ca-40c6-a24f-6esldf",
-			},
-			{
-				title: "This is Title",
-				body: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s ",
-				noteColor: "note__yellow",
-				dateCreated: currentDate,
-				_id: "7106fe2e-asdf8ca-40c6-a24f-6esldf",
-			},
-			{
-				title: "This is Title",
-				body: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s ",
-				noteColor: "note__red",
-				dateCreated: currentDate,
-				_id: "7106fsdfe2e-a8ca-40c6-a24f-6esldf",
-			},
-			{
-				title: "This is Title",
-				body: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s ",
-				noteColor: "note__cyan",
-				dateCreated: currentDate,
-				_id: "7106fe2e-asdsadff8ca-40c6-a24f-6esldf",
-			},
-			{
-				title: "This is Title",
-				body: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s ",
-				noteColor: "note__purple",
-				dateCreated: currentDate,
-				_id: "7106fe2e-asddfsadff8ca-40c6-a24f-6esldf",
-			},
-		],
+		noteList: [],
+		trashList: [],
+		archiveList: [],
 		noteObj: inititalNoteObj,
 	};
 
+	const [isEditable, setIsEditable] = useState(false);
+
+	const [bodyText, setBodyText] = useState("");
+
 	const [noteState, noteDispatch] = useReducer(noteReducer, initialNoteState);
+
+	// Note services Start
 
 	const addToNoteList = async (axiosRequest, note) => {
 		try {
@@ -81,7 +40,6 @@ export const NoteProvider = ({ children }) => {
 				resKey: "notes",
 				data: { note: note },
 			});
-
 			noteDispatch({ type: "SAVE", payload: output });
 		} catch (error) {
 			console.log("from addToNoteList", error);
@@ -105,13 +63,96 @@ export const NoteProvider = ({ children }) => {
 		}
 	};
 
+	const deleteNote = async (axiosRequest, note) => {
+		const { _id } = note;
+		try {
+			const deleteNoteURL = `/api/notes/${_id}`;
+			const { output } = await axiosRequest({
+				method: "DELETE",
+				url: deleteNoteURL,
+				resKey: "notes",
+				data: { note: note },
+			});
+
+			noteDispatch({ type: "DELETE", payload: output, note: note });
+		} catch (error) {
+			console.log("from addToNoteList", error);
+		}
+	};
+
+	const restoreNote = async (axiosRequest, note) => {
+		try {
+			const addToNoteListURL = "/api/notes";
+			const { output } = await axiosRequest({
+				method: "POST",
+				url: addToNoteListURL,
+				resKey: "notes",
+				data: { note: note },
+			});
+
+			noteDispatch({ type: "RESTORE", payload: output, note: note });
+		} catch (error) {
+			console.log("from addToNoteList", error);
+		}
+	};
+
+	const archiveNote = async (axiosRequest, note, isArchive) => {
+		try {
+			const archiveNoteListURL = `/api/notes/archives/${note._id}`;
+			const archiveRestoreNoteListURL = `/api/archives/restore/${note._id}`;
+			const URL = isArchive ? archiveRestoreNoteListURL : archiveNoteListURL;
+			const { output, response } = await axiosRequest({
+				method: "POST",
+				url: URL,
+				resKey: "archives",
+				data: { note: note },
+			});
+			const { notes } = response;
+			console.log({ response });
+
+			noteDispatch({ type: "ARCHIVE", payload: output, notes: notes });
+		} catch (error) {
+			console.log("from addToNoteList", error);
+		}
+	};
+
+	const deleteArchivedNote = async (axiosRequest, note) => {
+		const { _id } = note;
+		try {
+			const deleteArchiveNoteURL = `/api/archives/delete/${_id}`;
+			const { output } = await axiosRequest({
+				method: "DELETE",
+				url: deleteArchiveNoteURL,
+				resKey: "archives",
+				data: { note: note },
+			});
+
+			noteDispatch({
+				type: "DELETE_FROM_ARCHIVE",
+				payload: output,
+				note: note,
+			});
+		} catch (error) {
+			console.log("from addToNoteList", error);
+		}
+	};
+
+	// Note services END
+
 	const value = {
 		noteState,
 		noteDispatch,
 		inititalNoteObj,
-		palette,
 		addToNoteList,
 		updateNote,
+		deleteNote,
+		restoreNote,
+		archiveNote,
+		deleteArchivedNote,
+		bodyText,
+		setBodyText,
+		isEditable,
+		setIsEditable,
 	};
 	return <NoteContext.Provider value={value}>{children}</NoteContext.Provider>;
 };

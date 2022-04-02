@@ -1,4 +1,5 @@
 import { useLocation } from "react-router-dom";
+import { bxIcons } from "../../../../data/icons";
 import "./SearchBox.css";
 
 export const SearchBox = () => {
@@ -20,7 +21,7 @@ export const SearchBox = () => {
 				onClick={onClickSearchHandler}
 				className="btn btn--primary btn--icon"
 			>
-				<i className="bx bx-search-alt-2"></i>
+				{bxIcons.searchAlt2}
 			</button>
 		</form>
 	);

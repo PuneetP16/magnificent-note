@@ -12,6 +12,8 @@ export const AuthProvider = ({ children }) => {
 	const toggleAuth = () => {
 		setIsAuth((auth) => !auth);
 	};
+
 	const value = { isAuth, toggleAuth, token, setIsAuth };
 	return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
+	
 };
