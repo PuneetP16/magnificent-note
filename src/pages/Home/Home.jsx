@@ -1,45 +1,42 @@
 import React from "react";
-import { Aside, NoteEditor, NoteListing } from "../../components";
+import { NoteEditor, NoteListing, NoteListWrapper } from "../../components";
 import "./Home.css";
-import { useState } from "react";
+import { useNote } from "../../contexts";
 
 export const Home = () => {
-	const [isPaletteVisible, setIsPaletteVisible] = useState(false);
+	const { noteState } = useNote();
 
-	const removeModalHandler = (e) => {
-		const isPaletteIcon = e.target.className === "bx bx-palette";
-		const isPalette = e.target.className === "note__palette";
-
-		if (isPaletteIcon) {
-			setIsPaletteVisible((w) => !w);
-		}
-
-		if (isPaletteVisible) {
-			if (!isPalette) {
-				setIsPaletteVisible((w) => !w);
-			}
-			if (isPalette) {
-				setIsPaletteVisible(true);
-			}
-			if (isPaletteIcon) {
-				setIsPaletteVisible((w) => !w);
-			}
-		}
-	};
-
+	const { noteList } = noteState;
 	return (
-		<div onClick={(e) => removeModalHandler(e)} className="home_page">
+		<div className="home_page">
 			<main className="main--home_page">
-				<Aside />
-				<section className="note_section">
+				<section className="note_editor_section">
 					<div className="note_container">
-						<div>Pinned</div>
-						<NoteEditor
-							isPaletteVisible={isPaletteVisible}
-							setIsPaletteVisible={setIsPaletteVisible}
-						/>
-						<NoteListing />
+						<NoteEditor />
 					</div>
+				</section>
+				<section className="note_lisiting_section">
+					<h3>Pinned Notes</h3>
+					<NoteListWrapper>
+						{noteList?.length > 0 ? (
+							<NoteListing
+								noteList={noteList
+									.filter((note) => !note.isTrash)
+									.filter((note) => note.isPinned)}
+								isPinSection={true}
+							/>
+						) : null}
+					</NoteListWrapper>
+				</section>
+				<section className="note_lisiting_section">
+					<h3>Other Notes</h3>
+					<NoteListWrapper>
+						{noteList?.length > 0 ? (
+							<NoteListing
+								noteList={noteList.filter((note) => !note.isTrash)}
+							/>
+						) : null}
+					</NoteListWrapper>
 				</section>
 			</main>
 		</div>

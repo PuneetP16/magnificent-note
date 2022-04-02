@@ -2,6 +2,8 @@ import { createContext, useContext } from "react";
 import { BrowserRouter } from "react-router-dom";
 import { AuthProvider } from "./authContext";
 import { LoaderProvider } from "./loaderContext";
+import { NoteProvider } from "./noteContext";
+import { ScrollToTopProvider } from "./scrollToTopContext";
 import { ThemeProvider } from "./themeContext";
 import { UserProvider } from "./userContext";
 
@@ -14,13 +16,17 @@ export const MagnificentProvider = ({ children }) => {
 	return (
 		<MagnificentContext.Provider value={value}>
 			<BrowserRouter>
-				<AuthProvider>
-					<UserProvider>
-						<ThemeProvider>
-							<LoaderProvider>{children}</LoaderProvider>
-						</ThemeProvider>
-					</UserProvider>
-				</AuthProvider>
+				<ScrollToTopProvider>
+					<AuthProvider>
+						<UserProvider>
+							<NoteProvider>
+								<ThemeProvider>
+									<LoaderProvider>{children}</LoaderProvider>
+								</ThemeProvider>
+							</NoteProvider>
+						</UserProvider>
+					</AuthProvider>
+				</ScrollToTopProvider>
 			</BrowserRouter>
 		</MagnificentContext.Provider>
 	);

@@ -14,8 +14,18 @@ export const signIn = async ({
 
 		const res = await axios.post("/api/auth/login", loginData);
 		if (res.status === 200) {
+			setAlert((a) => ({
+				...a,
+				text: "Logging in...",
+				type: "alert--success",
+				visibility: true,
+			}));
+
 			localStorage.setItem("noteToken", res.data.encodedToken);
-			toggleAuth();
+			setTimeout(() => {
+				toggleAuth();
+			}, 1000);
+
 			const currentUserData = {
 				loginData: { ...loginData },
 
@@ -51,6 +61,7 @@ export const signIn = async ({
 	} catch (error) {
 		console.log(error, "Invalid Credentials");
 		let msg = JSON.stringify(error);
+
 		let parsedMsg = JSON.parse(msg);
 		const alertText =
 			parsedMsg.status === 404

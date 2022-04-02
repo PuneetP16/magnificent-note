@@ -5,6 +5,7 @@
 	--COLOR-NOTE-BG-YELLOW: rgb(255, 254, 168);
 	--COLOR-NOTE-BG-PURPLE: rgb(250, 186, 250);
 	--COLOR-NOTE-BG-CYAN: rgb(138, 229, 252);
+	--COLOR-NOTE-BG: rgb(0, 30, 75);
 }
 
 .note__red {
@@ -35,7 +36,7 @@
 	width: 10rem;
 	list-style-type: none;
 	flex-flow: row wrap;
-	background-color: var(--COLOR-PRIMARY-DARK);
+	background-color: var(--COLOR-NOTE-BG);
 	padding: 5px;
 	border-radius: 8px;
 	gap: 8px;
@@ -56,24 +57,26 @@
 
 .note {
 	min-height: 5rem;
-	width: 50rem;
+	width: 70rem;
 	border-radius: 8px;
-	padding: 1rem;
+	position: relative;
 	padding-bottom: 2px;
+	color: var(--COLOR-TXT);
+}
+
+.note--displayed {
+	width: 30rem;
+	list-style-type: none;
 }
 
 .btn__pin_it {
 	position: absolute;
 	display: flex;
 	justify-content: flex-end;
-	font-size: 2.4rem;
+	font-size: 2.6rem;
 	right: 1rem;
-	top: 1rem;
+	top: 1.5rem;
 	background-color: inherit;
-}
-
-.note__body {
-	width: 100%;
 }
 
 .note__form {
@@ -85,6 +88,8 @@
 	background-color: inherit;
 	outline: none;
 	border: 0;
+	padding: 6px;
+	color: var(--COLOR-TXT);
 }
 
 .note__textarea {
@@ -92,6 +97,8 @@
 	width: 100%;
 	outline: none;
 	border: 0;
+	padding: 6px;
+	color: inherit;
 }
 
 .note__heading:focus,
@@ -106,10 +113,25 @@ select:focus {
 .note__footer {
 	display: flex;
 	align-items: center;
+	padding: 1.5rem;
+	border-top: 1px solid var(--COLOR-PRIMARY-DARK);
+}
+
+.note--displayed .note__footer {
+	flex-flow: column nowrap;
+	gap: 6px;
+	padding: 8px;
 }
 
 .note__created_date {
-	font-weight: 200;
+	font-weight: 400;
+}
+
+.note--displayed .note__created_date {
+	margin-left: auto;
+	padding-right: 3.5rem;
+	display: flex;
+	justify-content: space-around;
 }
 
 .note__cta {
@@ -122,6 +144,12 @@ select:focus {
 	margin-left: auto;
 }
 
+.note--displayed .note__cta {
+	margin-left: 0;
+	justify-content: space-between;
+	gap: 5rem;
+}
+
 .btn_note__cta {
 	cursor: pointer;
 	background-color: inherit;
@@ -131,4 +159,37 @@ select:focus {
 	height: fit-content;
 	display: grid;
 	place-content: center;
+	color: var(--COLOR-TXT);
+	color: inherit;
+}
+
+.note__title {
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	width: 95%;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	font-weight: 500;
+	line-height: 1.5;
+	font-size: 2rem;
+}
+
+.note__content {
+	overflow: hidden;
+	text-overflow: ellipsis;
+	display: -webkit-box;
+	-webkit-line-clamp: 7;
+	-webkit-box-orient: vertical;
+	font-size: 1.7rem;
+}
+.note__body {
+	padding: 1.5rem;
+	/* text-overflow: ellipsis ellipsis; */
+	text-overflow: ellipsis;
+}
+.note--displayed .note__body {
+	width: 100%;
+	display: flex;
+	gap: 1rem;
+	flex-flow: column nowrap;
 }

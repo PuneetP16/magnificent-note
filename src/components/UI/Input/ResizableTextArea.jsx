@@ -8,7 +8,6 @@ export const ResizableTextArea = ({
 	value,
 	onChange,
 }) => {
-
 	// commented for development purpose
 	// const [textareaheight, setTextareaheight] = useState(Number(rows));
 
