@@ -7,6 +7,7 @@ import {
 } from "../../../components";
 import { useUser } from "../../../contexts";
 import { useDocumentTitle } from "../../../customHooks";
+import { bxIcons } from "../../../data/icons";
 import { signUp } from "../../../services";
 import "./SignUp.css";
 
@@ -124,7 +125,7 @@ export const SignUp = () => {
 					<button className="form__signup_btn btn btn--primary">Sign Up</button>
 					<Link className="btn btn--icon" to="/login">
 						Already have an Account? Login
-						<i className="bx bx-right-arrow-alt"></i>
+						{bxIcons.rightArrow}
 					</Link>
 				</form>
 			</div>

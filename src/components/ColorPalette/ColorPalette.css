@@ -1,0 +1,56 @@
+:root {
+	--COLOR-NOTE-BG-RED: rgb(255, 168, 168);
+	--COLOR-NOTE-BG-BLUE: rgb(138, 187, 252);
+	--COLOR-NOTE-BG-GREEN: rgb(168, 255, 190);
+	--COLOR-NOTE-BG-YELLOW: rgb(255, 254, 168);
+	--COLOR-NOTE-BG-PURPLE: rgb(250, 186, 250);
+	--COLOR-NOTE-BG-CYAN: rgb(138, 229, 252);
+	--COLOR-NOTE-BG: rgb(0, 30, 75);
+}
+
+.note__red {
+	background-color: var(--COLOR-NOTE-BG-RED);
+}
+.note__green {
+	background-color: var(--COLOR-NOTE-BG-GREEN);
+}
+
+.note__yellow {
+	background-color: var(--COLOR-NOTE-BG-YELLOW);
+}
+.note__purple {
+	background-color: var(--COLOR-NOTE-BG-PURPLE);
+}
+
+.note__blue {
+	background-color: var(--COLOR-NOTE-BG-BLUE);
+}
+
+.note__cyan {
+	background-color: var(--COLOR-NOTE-BG-CYAN);
+}
+
+.note__palette {
+	position: absolute;
+	display: flex;
+	width: 10rem;
+	list-style-type: none;
+	flex-flow: row wrap;
+	background-color: var(--COLOR-NOTE-BG);
+	padding: 5px;
+	border-radius: 8px;
+	gap: 8px;
+	bottom: 2rem;
+	right: 1.8rem;
+}
+
+.note__palette li {
+	cursor: pointer;
+	width: 2.4rem;
+	height: 2.4rem;
+	border-radius: 50%;
+}
+
+.note__palette_wrapper {
+	position: relative;
+}

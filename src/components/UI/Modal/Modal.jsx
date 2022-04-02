@@ -4,7 +4,6 @@ import ReactDOM from "react-dom";
 import "./Modal.css";
 
 export const Modal = ({ palette, handleClick }) => {
-	console.log("aaraha hu mai");
 	return ReactDOM.createPortal(
 		<div className="note__palette_wrapper">
 			<ul className="note__palette">

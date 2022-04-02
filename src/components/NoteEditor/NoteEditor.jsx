@@ -1,53 +1,50 @@
 import { useNote } from "../../contexts";
 import { IcRoundAddCircleOutline } from "../../data/Icon";
 import { bxIcons } from "../../data/icons";
-import { ResizableTextArea } from "../UI/Input/ResizableTextArea";
 import "./NoteEditor.css";
 import { useState } from "react";
 import { Alert } from "../UI/Alert/Alert";
 import { useAxios } from "../../customHooks";
+import { ColorPalette } from "../ColorPalette/ColorPalette";
+import "react-quill/dist/quill.snow.css";
+import ReactQuill from "react-quill";
+import "./quill.css";
 
 export const NoteEditor = () => {
-	const { noteState, noteDispatch, inititalNoteObj, palette, addToNoteList } =
-		useNote();
+	const {
+		noteState,
+		noteDispatch,
+		inititalNoteObj,
+		addToNoteList,
+		bodyText,
+		setBodyText,
+		updateNote,
+		isEditable,
+		setIsEditable,
+	} = useNote();
 	const { noteObj } = noteState;
 	const { noteColor, dateCreated } = noteObj;
 
 	const { axiosRequest } = useAxios();
-	const [isPaletteVisible, setIsPaletteVisible] = useState(false);
-
 	const [alert, setAlert] = useState({
 		visibility: false,
 		text: "",
 		type: "",
 	});
 
-	const removeModalHandler = (e) => {
-		const isPaletteIcon = e.target.className === "bx bx-palette";
-		const isPalette = e.target.className === "note__palette";
-
-		if (isPaletteIcon) {
-			setIsPaletteVisible((w) => !w);
-		}
-
-		if (isPaletteVisible) {
-			if (!isPalette) {
-				setIsPaletteVisible((w) => !w);
-			}
-			if (isPalette) {
-				setIsPaletteVisible(true);
-			}
-			if (isPaletteIcon) {
-				setIsPaletteVisible((w) => !w);
-			}
-		}
+	const noteInputHandler = (e) => {
+		let key = e.target.name;
+		let value = e.target.value;
+		noteDispatch({
+			type: "INPUT_CHANGE",
+			payload: { [key]: value },
+		});
 	};
 
 	const setColor = (e) => {
 		const tagName = e.target.tagName;
 		if (tagName === "LI") {
 			let selectedClass = e.target.className;
-
 			noteDispatch({
 				type: "COLOR",
 				payload: selectedClass,
@@ -55,40 +52,54 @@ export const NoteEditor = () => {
 		}
 	};
 
-	const inputChangeHandler = (e) => {
-		let key = e.target.name;
-		let value = e.target.value;
-		noteDispatch({
-			type: "INPUT_CHANGE",
-			payload: { key, value },
-		});
-	};
-
 	const saveNote = () => {
-		if (noteObj.title === "" && noteObj.body === "") {
-			setAlert({
-				visibility: true,
-				text: "Enter text before saving the note",
-				type: "alert--danger",
-			});
-		} else {
-			addToNoteList(axiosRequest, noteObj);
+		if (noteObj.title || (bodyText && bodyText !== "<p><br></p>")) {
+			isEditable
+				? updateNote(axiosRequest, { ...noteObj, body: bodyText })
+				: addToNoteList(axiosRequest, { ...noteObj, body: bodyText });
 
 			noteDispatch({
 				type: "RESET",
 				payload: inititalNoteObj,
 			});
+			setBodyText("");
+		} else {
+			setAlert({
+				visibility: true,
+				text: "Enter text before saving the note",
+				type: "alert--danger",
+			});
 		}
+	};
+
+	const cancelBtn = () => {
+		noteDispatch({
+			type: "RESET",
+			payload: inititalNoteObj,
+		});
+		setIsEditable(false);
+		setBodyText("");
+	};
+
+	const modules = {
+		toolbar: [
+			["bold", "italic", "underline", "strike"],
+			[{ list: "ordered" }, { list: "bullet" }],
+			["blockquote", "code-block"],
+			["link", "image", "video"],
+		],
 	};
 
 	return (
 		<>
 			<Alert alert={alert} setAlert={setAlert} />
-			<div
-				onClick={(e) => removeModalHandler(e)}
-				className={`note ${noteColor} `}
-			>
-				<button className="btn_note__cta btn__pin_it">{bxIcons.pin}</button>
+			<div className={`note ${noteColor} `}>
+				{isEditable ? (
+					<button className="btn_note__cta btn__cross " onClick={cancelBtn}>
+						{bxIcons.cross}
+					</button>
+				) : null}
+
 				<div className="note__body">
 					<form className="note__form">
 						<input
@@ -97,35 +108,24 @@ export const NoteEditor = () => {
 							type="text"
 							className="note__heading input"
 							placeholder="Note Title.."
-							onChange={inputChangeHandler}
+							onChange={noteInputHandler}
 							required
 						/>
-						<ResizableTextArea
+
+						<ReactQuill
+							modules={modules}
+							value={bodyText}
+							onChange={setBodyText}
 							placeholder="Note Body"
-							rows="2"
-							className="note__textarea"
 							name="body"
-							onChange={inputChangeHandler}
-							value={noteObj.body}
-							required
+							className="note__textarea"
 						/>
 					</form>
 				</div>
 				<div className="note__footer">
 					<div className="note__created_date">Date: {dateCreated}</div>
 					<div className="note__cta">
-						<button onClick={setColor} className="btn_note__cta btn__palette">
-							{bxIcons.palette}
-							{isPaletteVisible ? (
-								<div className="note__palette_wrapper">
-									<ul className="note__palette">
-										{palette.map((c) => {
-											return <li key={c.color} className={c.className}></li>;
-										})}
-									</ul>
-								</div>
-							) : null}
-						</button>
+						<ColorPalette onClickSetColor={(e) => setColor(e)} />
 
 						<button className="btn_note__cta btn__label">
 							{bxIcons.label}

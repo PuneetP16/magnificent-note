@@ -20,9 +20,7 @@ export const Home = () => {
 					<NoteListWrapper>
 						{noteList?.length > 0 ? (
 							<NoteListing
-								noteList={noteList
-									.filter((note) => !note.isTrash)
-									.filter((note) => note.isPinned)}
+								list={noteList.filter((note) => note.isPinned)}
 								isPinSection={true}
 							/>
 						) : null}
@@ -32,9 +30,7 @@ export const Home = () => {
 					<h3>Other Notes</h3>
 					<NoteListWrapper>
 						{noteList?.length > 0 ? (
-							<NoteListing
-								noteList={noteList.filter((note) => !note.isTrash)}
-							/>
+							<NoteListing list={noteList.filter((note) => !note.isPinned)} />
 						) : null}
 					</NoteListWrapper>
 				</section>
