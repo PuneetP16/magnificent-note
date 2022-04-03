@@ -1,0 +1,18 @@
+.note__footer {
+	position: relative;
+}
+
+.note_label__form {
+	position: absolute;
+	top: 1rem;
+	right: 12rem;
+}
+
+.note_label__input {
+	background-color: inherit;
+	/* outline: none; */
+	border: 0;
+	width: 10rem;
+	padding: 6px;
+	color: var(--COLOR-TXT);
+}

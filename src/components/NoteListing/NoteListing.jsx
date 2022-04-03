@@ -4,6 +4,7 @@ import "./NoteListing.css";
 import { useAxios } from "../../customHooks";
 import { ColorPalette } from "../ColorPalette/ColorPalette";
 import { MdiRestore } from "../../data/Icon";
+import { NoteLabelItem } from "../NoteLabelItem/NoteLabelItem";
 
 export const NoteListing = ({ list, isPinSection, isTrash, isArchive }) => {
 	const {
@@ -53,7 +54,7 @@ export const NoteListing = ({ list, isPinSection, isTrash, isArchive }) => {
 	};
 
 	return list.map((note, i) => {
-		const { _id, title, body, noteColor, dateCreated } = note;
+		const { _id, title, body, noteColor, dateCreated, labels } = note;
 
 		const toggleArchiveBtn = isArchive ? bxIcons.archiveOut : bxIcons.archiveIn;
 		const toggleTrashBtn = isTrash ? <MdiRestore /> : bxIcons.trashAlt;
@@ -74,6 +75,13 @@ export const NoteListing = ({ list, isPinSection, isTrash, isArchive }) => {
 						dangerouslySetInnerHTML={{ __html: body }}
 					/>
 				</div>
+				{labels.length > 0 ? (
+					<ul className="note__footer note__label_display note_listing__label">
+						{labels.map((label, index) => {
+							return <NoteLabelItem label={label} key={index} />;
+						})}
+					</ul>
+				) : null}
 				<div className="note__footer">
 					<div className="note__created_date">Date: {dateCreated}</div>
 					<div className="note__cta">

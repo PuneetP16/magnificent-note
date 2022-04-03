@@ -1,0 +1,64 @@
+.note__label_display {
+	display: flex;
+	gap: 5px;
+	padding: 6px;
+	flex-flow: row wrap;
+}
+
+.note--displayed .note_listing__label {
+	display: flex;
+	flex-flow: row wrap;
+	padding: 2px;
+	gap: 4px;
+	padding-top: 5px;
+}
+
+.label__li {
+	position: relative;
+	border: 1px solid var(--COLOR-TXT);
+	border-radius: 40/80%;
+	padding: 4px 8px;
+	border-radius: 15px;
+	list-style-type: none;
+	display: flex;
+	align-items: center;
+	gap: 5px;
+	cursor: default;
+	font-size: 15px;
+}
+
+.note--displayed .label__li {
+}
+
+.label__li:hover {
+}
+
+.label__item {
+}
+
+.label_btn__cross {
+	display: none;
+	cursor: pointer;
+	justify-content: flex-end;
+	font-size: 2.6rem;
+	right: 1rem;
+	top: 1.5rem;
+	background-color: inherit;
+	border: 0;
+	border-radius: 50%;
+	font-size: 20px;
+	place-content: center;
+	color: var(--COLOR-TXT);
+}
+
+.show_close_btn {
+	display: grid;
+}
+.label_btn__cross:hover {
+	transform: scale(1.2);
+	background: var(--btn-hover);
+}
+
+.label_btn__cross:active {
+	transform: scale(0.9);
+}

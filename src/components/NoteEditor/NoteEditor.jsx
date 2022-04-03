@@ -5,7 +5,7 @@ import "./NoteEditor.css";
 import { useState } from "react";
 import { Alert } from "../UI/Alert/Alert";
 import { useAxios } from "../../customHooks";
-import { ColorPalette } from "../ColorPalette/ColorPalette";
+import { ColorPalette, NoteLabel, NoteLabelItem } from "../index";
 import "react-quill/dist/quill.snow.css";
 import ReactQuill from "react-quill";
 import "./quill.css";
@@ -22,16 +22,17 @@ export const NoteEditor = () => {
 		isEditable,
 		setIsEditable,
 	} = useNote();
+
 	const { noteObj } = noteState;
 	const { noteColor, dateCreated } = noteObj;
-
+	const [showLabel, setShowLabel] = useState();
 	const { axiosRequest } = useAxios();
 	const [alert, setAlert] = useState({
 		visibility: false,
 		text: "",
 		type: "",
 	});
-
+	const { labels } = noteObj;
 	const noteInputHandler = (e) => {
 		let key = e.target.name;
 		let value = e.target.value;
@@ -53,7 +54,10 @@ export const NoteEditor = () => {
 	};
 
 	const saveNote = () => {
-		if (noteObj.title || (bodyText && bodyText !== "<p><br></p>")) {
+		if (
+			noteObj.title.trim() !== "" ||
+			(bodyText !== "" && bodyText !== "<p><br></p>")
+		) {
 			isEditable
 				? updateNote(axiosRequest, { ...noteObj, body: bodyText })
 				: addToNoteList(axiosRequest, { ...noteObj, body: bodyText });
@@ -103,6 +107,7 @@ export const NoteEditor = () => {
 				<div className="note__body">
 					<form className="note__form">
 						<input
+							autoFocus
 							value={noteObj.title}
 							name="title"
 							type="text"
@@ -127,20 +132,29 @@ export const NoteEditor = () => {
 					<div className="note__cta">
 						<ColorPalette onClickSetColor={(e) => setColor(e)} />
 
-						<button className="btn_note__cta btn__label">
+						<button
+							className="btn_note__cta btn__label"
+							onMouseEnter={() => setShowLabel(true)}
+							onMouseLeave={() => setShowLabel(false)}
+						>
 							{bxIcons.label}
 						</button>
-						<button className="btn_note__cta btn__archive_in">
-							{bxIcons.archiveIn}
-						</button>
-						<button className="btn_note__cta btn__trash_alt">
-							{bxIcons.trashAlt}
-						</button>
+						{showLabel ? <NoteLabel /> : null}
+
 						<button onClick={saveNote} className="btn_note__cta btn__trash_alt">
 							<IcRoundAddCircleOutline />
 						</button>
 					</div>
 				</div>
+				{labels.length > 0 ? (
+					<ul className="note__footer note__label_display">
+						{labels.map((label, index) => {
+							return (
+								<NoteLabelItem label={label} key={index} closeBtn={true} />
+							);
+						})}
+					</ul>
+				) : null}
 			</div>
 		</>
 	);
