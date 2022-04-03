@@ -1,6 +1,7 @@
 import React from "react";
 import { NoteListing, NoteListWrapper } from "../../components";
 import { useNote } from "../../contexts";
+import { bxIcons } from "../../data/icons";
 import "./Trash.css";
 
 export const Trash = () => {
@@ -9,12 +10,16 @@ export const Trash = () => {
 	const { trashList } = noteState;
 	return (
 		<section className="note_lisiting_section">
-			<h3>Trashed Notes</h3>
-			<NoteListWrapper>
-				{trashList?.length > 0 ? (
-					<NoteListing list={trashList} isTrash="true" />
-				) : null}
-			</NoteListWrapper>
+			{trashList?.length > 0 ? (
+				<>
+					<h3>Trashed Notes</h3>
+					<NoteListWrapper>
+						<NoteListing list={trashList} isTrash="true" />
+					</NoteListWrapper>
+				</>
+			) : (
+				<div className="empty_list trash_list">{bxIcons.trashAlt}</div>
+			)}
 		</section>
 	);
 };

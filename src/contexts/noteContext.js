@@ -14,6 +14,7 @@ export const NoteProvider = ({ children }) => {
 		noteColor: "note__blue",
 		dateCreated: currentDate,
 		isPinned: false,
+		labels: [],
 	};
 
 	const initialNoteState = {

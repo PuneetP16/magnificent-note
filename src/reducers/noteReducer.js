@@ -46,6 +46,26 @@ export const noteReducer = (noteState, action) => {
 			noteObj = { ...payload };
 			return { noteObj, noteList, trashList, archiveList };
 
+		case "SET_LABEL":
+			let isLabelInLabels = noteObj.labels.includes(payload);
+
+			noteObj = {
+				...noteObj,
+				labels: isLabelInLabels
+					? [...noteObj.labels]
+					: [...noteObj.labels, payload],
+			};
+			console.log(noteObj);
+			return { noteObj, noteList, trashList, archiveList };
+
+		case "REMOVE_LABEL":
+			noteObj = {
+				...noteObj,
+				labels: [...noteObj.labels].filter((label) => label !== payload),
+			};
+			console.log(noteObj);
+			return { noteObj, noteList, trashList, archiveList };
+
 		default:
 			return noteState;
 	}

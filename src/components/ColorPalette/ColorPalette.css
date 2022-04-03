@@ -33,15 +33,16 @@
 .note__palette {
 	position: absolute;
 	display: flex;
-	width: 10rem;
+	width: 11rem;
 	list-style-type: none;
 	flex-flow: row wrap;
 	background-color: var(--COLOR-NOTE-BG);
-	padding: 5px;
+	padding: 10px;
 	border-radius: 8px;
 	gap: 8px;
-	bottom: 2rem;
-	right: 1.8rem;
+	bottom: 2.5rem;
+	right: -4rem;
+	justify-content: center;
 }
 
 .note__palette li {
