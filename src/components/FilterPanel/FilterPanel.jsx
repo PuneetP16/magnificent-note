@@ -45,6 +45,7 @@ export const FilterPanel = () => {
 				dispatch={dispatchSortByDate}
 				value={sortByDate}
 				options={sortOptionsDate}
+				type="Date"
 			/>
 			{/* filterBy */}
 			<section className="fitler_type__wrapper">
@@ -52,6 +53,7 @@ export const FilterPanel = () => {
 					dispatch={dispatchByPriority}
 					value={byPriority}
 					options={filterOptionsPriority}
+					type="Priority"
 				/>
 				{/* filterBy */}
 			</section>
@@ -60,6 +62,7 @@ export const FilterPanel = () => {
 					dispatch={dispatchByLabel}
 					value={selectedLabel}
 					options={filterOptionsLabel}
+					type="Labels"
 				/>
 			</section>
 		</form>
