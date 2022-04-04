@@ -5,3 +5,4 @@ export { useAuth, AuthProvider } from "./authContext";
 export { useMagnificent, MagnificentProvider } from "./magnificentContext";
 export { ScrollToTopProvider } from "./scrollToTopContext";
 export { useNote, NoteProvider } from "./noteContext";
+export { FilterProvider, useFilter } from "./filterContext";

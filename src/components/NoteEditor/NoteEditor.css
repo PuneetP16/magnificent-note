@@ -13,6 +13,11 @@
 .note--displayed {
 	width: 30rem;
 	list-style-type: none;
+	transition: all 1s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+.note--displayed:hover {
+	box-shadow: 0px 5px 20px 0px var(--COLOR-CARD-BOX-SHADOW1);
 }
 
 .note__form {
@@ -39,8 +44,7 @@
 
 .note__heading:focus,
 .note__textarea:focus,
-select:focus {
-	outline: none;
+.select--filter_by:focus {
 	border: 0;
 	background-color: inherit;
 	font-weight: 500;
@@ -49,7 +53,7 @@ select:focus {
 .note__footer {
 	display: flex;
 	align-items: center;
-	padding: 1.5rem;
+	padding: 5px 1.5rem;
 	border-top: 1px solid var(--COLOR-PRIMARY-DARK-THEME);
 }
 
@@ -63,11 +67,17 @@ select:focus {
 	font-weight: 400;
 }
 
-.note--displayed .note__created_date {
-	margin-left: auto;
-	padding-right: 3.5rem;
+.note_props {
 	display: flex;
-	justify-content: space-around;
+	justify-content: space-between;
+	align-items: center;
+	width: 100%;
+	padding: 3px 1rem;
+	cursor: default;
+}
+
+.note__priority {
+	font-size: 14px;
 }
 
 .note__cta {
@@ -80,14 +90,14 @@ select:focus {
 .note--displayed .note__cta {
 	margin-left: 0;
 	justify-content: space-between;
-	gap: 4rem;
+	gap: 3.6rem;
 }
 
 .btn_note__cta {
 	cursor: pointer;
 	background-color: inherit;
 	border: none;
-	font-size: 2.4rem;
+	font-size: 2.6rem;
 	padding: 0;
 	height: fit-content;
 	display: grid;
