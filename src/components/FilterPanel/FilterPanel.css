@@ -13,10 +13,11 @@
 	display: flex;
 	align-items: baseline;
 	flex-flow: row nowrap;
-	gap: 2.2rem;
+	gap: 6rem;
 	color: var(--COLOR-TXT);
 	align-items: baseline;
 	padding: 2px 0;
+	margin-left: 4px;
 }
 
 .filter__header {
@@ -48,13 +49,7 @@
 }
 
 .select:focus {
-	border-color: var(--COLOR-PRIMARY-THEME);
-}
-
-.select--sort_by {
-}
-
-.option {
+	background: var(--COLOR-WHITE);
 }
 
 .input_box {

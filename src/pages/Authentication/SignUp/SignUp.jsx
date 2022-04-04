@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import {
+	Alert,
 	InputTypeOne,
 	InputTypeThree,
 	InputTypeTwo,
@@ -27,6 +28,12 @@ export const SignUp = () => {
 
 	const { loginData, userData, dispatch } = useUser();
 
+	const [alert, setAlert] = useState({
+		visibility: false,
+		text: "",
+		type: "",
+	});
+
 	const navigate = useNavigate();
 	const toggleVisibility = () => {
 		setIsVisible((visible) => !visible);
@@ -40,20 +47,39 @@ export const SignUp = () => {
 		}));
 	};
 
+	const emailRegex =
+		/^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+	const passwordRegex = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*\W).{8,}$/;
+
 	const onSubmitHandler = (e) => {
 		e.preventDefault();
-		signUp({
-			signUpData,
-			navigate,
-			loginData,
-			userData,
-			dispatch,
-		});
+
+		if (
+			signUpData.password.match(passwordRegex) &&
+			signUpData.email.match(emailRegex)
+		) {
+			signUp({
+				signUpData,
+				navigate,
+				loginData,
+				userData,
+				dispatch,
+			});
+		} else {
+			console.log("error");
+			setAlert((a) => ({
+				...a,
+				visibility: true,
+				text: "Minimum 8 char, 1 Uppercase, 1 Lowercase, 1 number & 1 Special Character required",
+				type: "alert--danger",
+			}));
+		}
 	};
 
 	return (
 		<main>
 			<div className="center">
+				<Alert alert={alert} setAlert={setAlert} />
 				<form onSubmit={onSubmitHandler} className="form flex" method="get">
 					<h2 className="h3">Sign Up</h2>
 					<InputTypeOne

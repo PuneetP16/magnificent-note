@@ -28,6 +28,12 @@
 		"footer";
 }
 
+.not_found_page {
+	grid-template-columns: 1fr;
+	grid-template-rows: 1fr;
+	grid-template-areas: "main";
+}
+
 .main {
 	grid-area: main;
 }

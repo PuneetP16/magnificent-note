@@ -25,12 +25,19 @@ function App() {
 
 	const isAuthPage = pathname === "/login" || pathname === "/signup";
 
-	const injectPageCss = isLandingPage ? "landing" : isAuthPage ? "auth" : "";
+	const isNotFoundPage = pathname === "/pagenotfound";
+
+	const injectPageCss = () => {
+		if (isNotFoundPage) return "not_found_page";
+		if (isLandingPage) return "landing";
+		if (isAuthPage) return "auth";
+	};
 
 	return (
-		<div className={`App body ${injectPageCss}`}>
+		<div className={`App body ${injectPageCss()}`}>
 			{pathname !== "/pagenotfound" && !isLandingPage && <Header />}
-			{isAuthPage || isLandingPage ? null : <Aside />}
+			
+			{isAuthPage || isLandingPage || isNotFoundPage ? null : <Aside />}
 			<Routes>
 				<Route path="/" element={<Landing />} />
 				<Route path="/mockbee" element={<MockBee />} />

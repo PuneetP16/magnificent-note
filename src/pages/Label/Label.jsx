@@ -3,6 +3,7 @@ import { NoteListing, NoteListWrapper } from "../../components";
 import "./Label.css";
 import { useNote } from "../../contexts";
 import { bxIcons } from "../../data/icons";
+import { camelCaseWordGenerator } from "../../utilities";
 
 export const Label = () => {
 	const { noteState } = useNote();
@@ -17,10 +18,7 @@ export const Label = () => {
 						const filteredLabelList = noteList.filter((note) =>
 							note.labels.includes(label)
 						);
-						const camelCaseLabel = `${label.split("")[0].toUpperCase()}${label
-							.split("")
-							.splice(1)
-							.join("")}`;
+						const camelCaseLabel = camelCaseWordGenerator(label);
 						return (
 							<section key={index} className="note_lisiting_section">
 								{filteredLabelList?.length > 0 ? (

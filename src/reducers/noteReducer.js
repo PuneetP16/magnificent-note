@@ -22,7 +22,6 @@ export const noteReducer = (noteState, action) => {
 			return { noteObj, noteList, trashList, archiveList, labelsList };
 
 		case "SAVE":
-			console.log(payload)
 			noteList = [...payload];
 			return { noteObj, noteList, trashList, archiveList, labelsList };
 

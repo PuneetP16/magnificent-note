@@ -5,9 +5,9 @@ import "./Content.css";
 export const Content = () => {
 	const { isAuth } = useAuth();
 
-	const getBtnText = isAuth ? "Create New Note" : "Join Now";
+	const getBtnText = isAuth ? "Create New Note" : "Login";
 
-	const getLinkPath = isAuth ? "/home" : "/signup";
+	const getLinkPath = isAuth ? "/home" : "/login";
 
 	return (
 		<section className="content_section">
@@ -24,11 +24,11 @@ export const Content = () => {
 				efficiency without any efforts
 			</div>
 
-			<Link to={getLinkPath}>
-				<button className="btn btn--primary authbtn">{getBtnText}</button>
+			<Link to={getLinkPath} className="btn btn--primary auth_btn">
+				{getBtnText}
 			</Link>
-			<Link to="/login" className="authlink link_reset h6">
-				{isAuth ? null : "Already have an account?"}
+			<Link to="/signup" className="authlink link_reset h6">
+				{isAuth ? null : "Sigup for new account"}
 			</Link>
 		</section>
 	);
