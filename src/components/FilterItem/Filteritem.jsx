@@ -3,7 +3,7 @@ import React from "react";
 export const Filteritem = ({ dispatch, value, options, type }) => {
 	return (
 		<section className="fitler_type__wrapper">
-			<h3 className="h6 filter__head">type</h3>
+			<h3 className="h6 filter__head">{type}</h3>
 
 			<select
 				onChange={dispatch}
