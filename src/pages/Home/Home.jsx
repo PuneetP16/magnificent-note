@@ -1,20 +1,39 @@
 import React from "react";
-import { NoteEditor, NoteListing, NoteListWrapper } from "../../components";
+import {
+	FilterPanel,
+	NoteEditor,
+	NoteListing,
+	NoteListWrapper,
+} from "../../components";
 import "./Home.css";
-import { useNote } from "../../contexts";
+import { useFilter, useNote } from "../../contexts";
+import {
+	filterByLabel,
+	filterByPriority,
+	sortItByDate,
+} from "../../utilities/filterOperations";
 
 export const Home = () => {
 	const { noteState } = useNote();
+	const { sortByDate, byPriority, selectedLabel } = useFilter();
 
 	const { noteList } = noteState;
 	const pinnedList = noteList.filter((note) => note.isPinned);
 	const unPinnedList = noteList.filter((note) => !note.isPinned);
+
+	let filteredList = filterByPriority(unPinnedList, byPriority);
+	filteredList = filterByLabel(filteredList, selectedLabel);
+
+	filteredList = sortItByDate(filteredList, sortByDate);
 	return (
 		<div className="home_page">
 			<main className="main--home_page">
 				<section className="note_editor_section">
 					<div className="note_container">
 						<NoteEditor />
+					</div>
+					<div className="filter_panel__wrapper">
+						<FilterPanel />
 					</div>
 				</section>
 				<section className="note_lisiting_section">
@@ -28,11 +47,11 @@ export const Home = () => {
 					) : null}
 				</section>
 				<section className="note_lisiting_section">
-					{unPinnedList?.length > 0 ? (
+					{filteredList?.length > 0 ? (
 						<>
 							<h3>Other Notes</h3>
 							<NoteListWrapper>
-								<NoteListing list={unPinnedList} />
+								<NoteListing list={filteredList} />
 							</NoteListWrapper>
 						</>
 					) : null}

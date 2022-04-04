@@ -4,15 +4,21 @@
 
 .note_label__form {
 	position: absolute;
-	top: 1rem;
-	right: 12rem;
+	top: 6px;
+	right: 12.5rem;
 }
 
-.note_label__input {
+.note .note_label__input {
 	background-color: inherit;
 	/* outline: none; */
 	border: 0;
 	width: 10rem;
 	padding: 6px;
 	color: var(--COLOR-TXT);
+}
+
+.note .select {
+	min-width: auto;
+	width: fit-content;
+	margin-left: 2rem;
 }

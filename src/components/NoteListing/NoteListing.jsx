@@ -5,6 +5,7 @@ import { useAxios } from "../../customHooks";
 import { ColorPalette } from "../ColorPalette/ColorPalette";
 import { MdiRestore } from "../../data/Icon";
 import { NoteLabelItem } from "../NoteLabelItem/NoteLabelItem";
+import { useLocation } from "react-router-dom";
 
 export const NoteListing = ({ list, isPinSection, isTrash, isArchive }) => {
 	const {
@@ -27,6 +28,8 @@ export const NoteListing = ({ list, isPinSection, isTrash, isArchive }) => {
 			updateNote(axiosRequest, note);
 		}
 	};
+
+	const isLabelPage = useLocation().pathname === "/label";
 
 	const archiveToggleFromNoteList = (note) => {
 		archiveNote(axiosRequest, note, isArchive);
@@ -54,7 +57,7 @@ export const NoteListing = ({ list, isPinSection, isTrash, isArchive }) => {
 	};
 
 	return list.map((note, i) => {
-		const { _id, title, body, noteColor, dateCreated, labels } = note;
+		const { _id, title, body, noteColor, dateCreated, labels, priority } = note;
 
 		const toggleArchiveBtn = isArchive ? bxIcons.archiveOut : bxIcons.archiveIn;
 		const toggleTrashBtn = isTrash ? <MdiRestore /> : bxIcons.trashAlt;
@@ -62,12 +65,14 @@ export const NoteListing = ({ list, isPinSection, isTrash, isArchive }) => {
 
 		return (
 			<li key={_id} className={`note ${noteColor} note--displayed `}>
-				<button
-					onClick={() => togglePinFromNoteList(note)}
-					className="btn_note__cta btn__pin_it"
-				>
-					{togglePinBtn}
-				</button>
+				{isLabelPage || isTrash || isArchive ? null : (
+					<button
+						onClick={() => togglePinFromNoteList(note)}
+						className="btn_note__cta btn__pin_it"
+					>
+						{togglePinBtn}
+					</button>
+				)}
 				<div className="note__body">
 					<div className="note__title">{title}</div>
 					<div
@@ -83,38 +88,47 @@ export const NoteListing = ({ list, isPinSection, isTrash, isArchive }) => {
 					</ul>
 				) : null}
 				<div className="note__footer">
-					<div className="note__created_date">Date: {dateCreated}</div>
-					<div className="note__cta">
-						{isTrash || isArchive ? null : (
-							<ColorPalette onClickSetColor={(e) => setColor(e, note)} />
-						)}
-						<button className="btn_note__cta btn__label">
-							{bxIcons.label}
-						</button>
-						{isTrash ? null : (
-							<button
-								onClick={() => archiveToggleFromNoteList(note)}
-								className="btn_note__cta btn__archive_in"
-							>
-								{toggleArchiveBtn}
-							</button>
-						)}
-						<button
-							onClick={() => deleteToggleFromList(note)}
-							className="btn_note__cta btn__trash_alt"
-						>
-							{toggleTrashBtn}
-						</button>
-
-						{isTrash || isArchive ? null : (
-							<button
-								onClick={() => editNote(note)}
-								className="btn_note__cta btn__trash_alt"
-							>
-								{bxIcons.edit}
-							</button>
-						)}
+					<div className="note_props">
+						<div className="note__created_date">Date: {dateCreated}</div>
+						<div className="note__priority">{priority}</div>
 					</div>
+					{isLabelPage ? null : (
+						<div className="note__cta">
+							{isTrash || isArchive ? null : (
+								<ColorPalette onClickSetColor={(e) => setColor(e, note)} />
+							)}
+							{isTrash || isArchive ? null : (
+								<button className="btn_note__cta btn__label">
+									{bxIcons.label}
+								</button>
+							)}
+							{isTrash ? null : (
+								<button
+									onClick={() => archiveToggleFromNoteList(note)}
+									className="btn_note__cta btn__archive_in"
+								>
+									{toggleArchiveBtn}
+								</button>
+							)}
+							{isArchive ? null : (
+								<button
+									onClick={() => deleteToggleFromList(note)}
+									className="btn_note__cta btn__trash_alt"
+								>
+									{toggleTrashBtn}
+								</button>
+							)}
+
+							{isTrash || isArchive ? null : (
+								<button
+									onClick={() => editNote(note)}
+									className="btn_note__cta btn__trash_alt"
+								>
+									{bxIcons.edit}
+								</button>
+							)}
+						</div>
+					)}
 				</div>
 			</li>
 		);

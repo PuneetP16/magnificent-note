@@ -17,3 +17,4 @@ export { ResizableTextArea } from "./UI/Input/ResizableTextArea";
 export { SearchBox } from "./UI/Header/SearchBox/SearchBox";
 export { ThemeToggle } from "./UI/ThemeToggle/ThemeToggle";
 export { NoteLabelItem } from "./NoteLabelItem/NoteLabelItem";
+export { FilterPanel } from "./FilterPanel/FilterPanel";

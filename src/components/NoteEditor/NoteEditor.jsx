@@ -42,6 +42,8 @@ export const NoteEditor = () => {
 		});
 	};
 
+	const filterOptionsPriority = ["High Priority", "Low Priority"];
+
 	const setColor = (e) => {
 		const tagName = e.target.tagName;
 		if (tagName === "LI") {
@@ -129,6 +131,19 @@ export const NoteEditor = () => {
 				</div>
 				<div className="note__footer">
 					<div className="note__created_date">Date: {dateCreated}</div>
+					<select
+						onChange={noteInputHandler}
+						className="note_label__input select select--filter_by"
+						value={noteObj.priority}
+						name="priority"
+					>
+						{filterOptionsPriority.map((option, index) => (
+							<option key={index} className="option input_box">
+								{option}
+							</option>
+						))}{" "}
+					</select>
+
 					<div className="note__cta">
 						<ColorPalette onClickSetColor={(e) => setColor(e)} />
 

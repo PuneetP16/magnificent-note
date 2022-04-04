@@ -1,5 +1,5 @@
 import { useContext, createContext, useReducer } from "react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { noteReducer } from "../reducers";
 
 const NoteContext = createContext();
@@ -7,7 +7,21 @@ const NoteContext = createContext();
 export const useNote = () => useContext(NoteContext);
 
 export const NoteProvider = ({ children }) => {
-	const currentDate = new Date().toLocaleDateString();
+	// const currentDate = new Date().toLocaleDateString();
+
+	function generateRandomDate() {
+		return new Date(+new Date() - Math.floor(Math.random() * 10000000000));
+	}
+
+	// Just for review purpose generated random dates to show working of sort by date functionality
+
+	const currentDate = new generateRandomDate().toLocaleDateString("en-IN");
+	const currentDate2 = new generateRandomDate().toLocaleDateString("en-IN");
+	const currentDate3 = new generateRandomDate().toLocaleDateString("en-IN");
+	const currentDate4 = new generateRandomDate().toLocaleDateString("en-IN");
+	const currentDate5 = new generateRandomDate().toLocaleDateString("en-IN");
+	const currentDate6 = new generateRandomDate().toLocaleDateString("en-IN");
+	const currentDate7 = new generateRandomDate().toLocaleDateString("en-IN");
 
 	const inititalNoteObj = {
 		title: "",
@@ -15,12 +29,80 @@ export const NoteProvider = ({ children }) => {
 		dateCreated: currentDate,
 		isPinned: false,
 		labels: [],
+		priority: "Low Priority",
 	};
 
 	const initialNoteState = {
-		noteList: [],
+		noteList: [
+			// Just for review purpose generated random notes to show working of sort and filter functionality
+
+			{
+				_id: 1,
+				title: "1",
+				noteColor: "note__blue",
+				dateCreated: currentDate,
+				isPinned: false,
+				labels: ["study"],
+				priority: "Low Priority",
+			},
+			{
+				_id: 2,
+				title: "2",
+				noteColor: "note__red",
+				dateCreated: currentDate2,
+				isPinned: false,
+				labels: ["game", "productivity", "study"],
+				priority: "High Priority",
+			},
+			{
+				_id: 3,
+				title: "3",
+				noteColor: "note__purple",
+				dateCreated: currentDate3,
+				isPinned: false,
+				labels: ["game", "productivity", "badminton"],
+				priority: "Low Priority",
+			},
+			{
+				_id: 4,
+				title: "4",
+				noteColor: "note__red",
+				dateCreated: currentDate4,
+				isPinned: false,
+				labels: ["game", "study", "chess"],
+				priority: "High Priority",
+			},
+			{
+				_id: 5,
+				title: "5",
+				noteColor: "note__green",
+				dateCreated: currentDate5,
+				isPinned: false,
+				labels: ["cricket", "game", "study"],
+				priority: "High Priority",
+			},
+			{
+				_id: 6,
+				title: "6",
+				noteColor: "note__yellow",
+				dateCreated: currentDate6,
+				isPinned: false,
+				labels: ["game", "chess", "badminton"],
+				priority: "Low Priority",
+			},
+			{
+				_id: 7,
+				title: "7",
+				noteColor: "note__cyan",
+				dateCreated: currentDate7,
+				isPinned: false,
+				labels: ["game", "chess"],
+				priority: "High Priority",
+			},
+		],
 		trashList: [],
 		archiveList: [],
+		labelsList: ["All"],
 		noteObj: inititalNoteObj,
 	};
 
@@ -43,7 +125,7 @@ export const NoteProvider = ({ children }) => {
 			});
 			noteDispatch({ type: "SAVE", payload: output });
 		} catch (error) {
-			console.log("from addToNoteList", error);
+			console.log("from addToNoteList access error", error);
 		}
 	};
 
@@ -137,6 +219,15 @@ export const NoteProvider = ({ children }) => {
 			console.log("from addToNoteList", error);
 		}
 	};
+
+	const { noteList } = noteState;
+
+	useEffect(() => {
+		noteDispatch({
+			type: "SET_LABELS_LIST",
+			payload: noteList,
+		});
+	}, [noteDispatch, noteList]);
 
 	// Note services END
 

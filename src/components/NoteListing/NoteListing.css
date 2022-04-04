@@ -1,0 +1,5 @@
+.note__priority {
+	border: 1px solid var(--COLOR-TXT);
+	padding: 2px 8px;
+	border-radius: 15px;
+}
