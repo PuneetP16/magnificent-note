@@ -22,7 +22,7 @@ export const Note = ({
 	const isLabelPage = pathname === "/label";
 	const isHomePage = pathname === "/home";
 	const isTrashPage = pathname === "/trash";
-	const isArchivePage = pathname === "/trash";
+	const isArchivePage = pathname === "/archive";
 
 	return (
 		<li key={_id} className={`note ${noteColor} note--displayed `}>
