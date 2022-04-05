@@ -28,7 +28,7 @@ export const Content = () => {
 				{getBtnText}
 			</Link>
 			<Link to="/signup" className="authlink link_reset h6">
-				{isAuth ? null : "Sigup for new account"}
+				{isAuth ? null : "Sign up for new account"}
 			</Link>
 		</section>
 	);
