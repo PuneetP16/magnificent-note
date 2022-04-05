@@ -150,7 +150,7 @@ export const NoteProvider = ({ children }) => {
 			type: "SET_LABELS_LIST",
 			payload: noteList,
 		});
-	}, [noteDispatch, noteList]);
+	}, [noteList]);
 
 	// Note services END
 

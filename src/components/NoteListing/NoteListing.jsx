@@ -20,7 +20,7 @@ export const NoteListing = ({ list, isPinSection }) => {
 
 	const { pathname } = useLocation();
 	const isTrashPage = pathname === "/trash";
-	const isArchivePage = pathname === "/trash";
+	const isArchivePage = pathname === "/archive";
 
 	const { axiosRequest } = useAxios();
 
