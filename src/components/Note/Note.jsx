@@ -15,7 +15,6 @@ export const Note = ({
 	toggleTrashBtn,
 	editNote,
 }) => {
-	console.log(note);
 	const { _id, title, body, noteColor, dateCreated, labels, priority } = note;
 
 	const { pathname } = useLocation();

@@ -1,4 +1,5 @@
 import { useFilter, useNote } from "../../contexts";
+import { bxIcons } from "../../data/icons";
 import { Filteritem } from "../FilterItem/Filteritem";
 import "./FilterPanel.css";
 
@@ -10,9 +11,12 @@ export const FilterPanel = () => {
 	} = useNote();
 
 	const sortOptionsDate = ["Newest First", "Newest Last"];
-
-	const filterOptionsPriority = ["All", "High Priority", "Low Priority"];
-
+	const filterOptionsPriority = [
+		"All",
+		"High Priority",
+		"Medium Priority",
+		"Low Priority",
+	];
 	const filterOptionsLabel =
 		labelsList.length > 0 ? labelsList : ["Filter by label"];
 
@@ -39,32 +43,28 @@ export const FilterPanel = () => {
 
 	return (
 		<form className="filter_panel">
-			{/* sortBy */}
-			<h3 className="h5 filter__head">Filters</h3>
+			<h3 className="h5 filter__head">
+				<span>{bxIcons.filterAlt} </span>
+				Filters
+			</h3>
 			<Filteritem
 				dispatch={dispatchSortByDate}
 				value={sortByDate}
 				options={sortOptionsDate}
 				type="Date"
 			/>
-			{/* filterBy */}
-			<section className="fitler_type__wrapper">
-				<Filteritem
-					dispatch={dispatchByPriority}
-					value={byPriority}
-					options={filterOptionsPriority}
-					type="Priority"
-				/>
-				{/* filterBy */}
-			</section>
-			<section className="fitler_type__wrapper">
-				<Filteritem
-					dispatch={dispatchByLabel}
-					value={selectedLabel}
-					options={filterOptionsLabel}
-					type="Labels"
-				/>
-			</section>
+			<Filteritem
+				dispatch={dispatchByPriority}
+				value={byPriority}
+				options={filterOptionsPriority}
+				type="Priority"
+			/>
+			<Filteritem
+				dispatch={dispatchByLabel}
+				value={selectedLabel}
+				options={filterOptionsLabel}
+				type="Labels"
+			/>
 		</form>
 	);
 };

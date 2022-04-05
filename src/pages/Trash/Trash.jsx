@@ -1,10 +1,13 @@
 import React from "react";
 import { NoteListing, NoteListWrapper } from "../../components";
 import { useNote } from "../../contexts";
+import { useDocumentTitle } from "../../customHooks";
 import { bxIcons } from "../../data/icons";
 import "./Trash.css";
 
 export const Trash = () => {
+	useDocumentTitle("Trash | MS");
+
 	const { noteState } = useNote();
 
 	const { trashList } = noteState;

@@ -4,8 +4,11 @@ import "./Label.css";
 import { useNote } from "../../contexts";
 import { bxIcons } from "../../data/icons";
 import { camelCaseWordGenerator } from "../../utilities";
+import { useDocumentTitle } from "../../customHooks";
 
 export const Label = () => {
+	useDocumentTitle("Label | MS");
+
 	const { noteState } = useNote();
 
 	const { noteList, labelsList } = noteState;

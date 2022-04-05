@@ -12,8 +12,11 @@ import {
 	filterByPriority,
 	sortItByDate,
 } from "../../utilities/filterOperations";
+import { useDocumentTitle } from "../../customHooks";
 
 export const Home = () => {
+	useDocumentTitle("Home | MS");
+
 	const { noteState } = useNote();
 	const { sortByDate, byPriority, selectedLabel } = useFilter();
 

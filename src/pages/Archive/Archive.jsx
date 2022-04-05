@@ -1,11 +1,13 @@
 import React from "react";
 import { NoteListing, NoteListWrapper } from "../../components";
 import { useNote } from "../../contexts";
+import { useDocumentTitle } from "../../customHooks";
 import { bxIcons } from "../../data/icons";
 import "./Archive.css";
 
 export const Archive = () => {
 	const { noteState } = useNote();
+	useDocumentTitle("Archive | MS");
 
 	const { archiveList } = noteState;
 	return (

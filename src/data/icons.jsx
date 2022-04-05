@@ -19,4 +19,5 @@ export const bxIcons = {
 	moon: <i className="bx bxs-moon"></i>,
 	sun: <i className="bx bxs-sun"></i>,
 	rightArrow: <i className="bx bx-right-arrow-alt"></i>,
+	filterAlt: <i className="bx bx-filter-alt"></i>,
 };
