@@ -74,7 +74,6 @@ export const signIn = async ({
 			type: "alert--danger",
 			visibility: true,
 		}));
-		// "Invalid Details / Server Error, Try Again"
 		toggleLoader();
 	}
 };

@@ -7,15 +7,16 @@
 
 .note_editor_section {
 	display: flex;
-	flex-flow: row wrap;
+	flex-flow: column wrap;
 	padding: 3rem;
 	padding-bottom: 1rem;
-	gap: 2rem;
+	gap: 2.5rem;
 }
 
 .note_container {
-	display: flex;
+	display: flex;	
 	flex-flow: column nowrap;
+	width: 70rem;
 }
 
 .note_lisiting_section {

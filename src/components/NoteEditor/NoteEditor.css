@@ -7,17 +7,22 @@
 	border-radius: 8px;
 	position: relative;
 	padding-bottom: 2px;
+	transition: all 1s cubic-bezier(0.165, 0.84, 0.44, 1);
 	color: var(--COLOR-TXT);
 }
 
+.note:hover {
+	box-shadow: var(--CARD-BOX-SHADOW);
+}
+
 .note--displayed {
-	width: 30rem;
+	width: 31rem;
 	list-style-type: none;
 	transition: all 1s cubic-bezier(0.165, 0.84, 0.44, 1);
 }
 
 .note--displayed:hover {
-	box-shadow: 0px 5px 20px 0px var(--COLOR-CARD-BOX-SHADOW1);
+	box-shadow: var(--CARD-BOX-SHADOW);
 }
 
 .note__form {
@@ -45,7 +50,7 @@
 .note__heading:focus,
 .note__textarea:focus,
 .select--filter_by:focus {
-	border: 0;
+	/* border: 0; */
 	background-color: inherit;
 	font-weight: 500;
 }
@@ -59,7 +64,7 @@
 
 .note--displayed .note__footer {
 	flex-flow: column nowrap;
-	gap: 6px;
+	gap: 8px;
 	padding: 8px;
 }
 

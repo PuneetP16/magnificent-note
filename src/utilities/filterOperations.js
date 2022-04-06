@@ -12,7 +12,6 @@ export const sortItByDate = (notesList, sortByDate) => {
 	const descending = (a, b) => {
 		const previousTime = getFormattedDate(a.dateCreated).getTime();
 		const nextTime = getFormattedDate(b.dateCreated).getTime();
-
 		return nextTime - previousTime;
 	};
 

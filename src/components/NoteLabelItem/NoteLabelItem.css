@@ -8,9 +8,9 @@
 .note--displayed .note_listing__label {
 	display: flex;
 	flex-flow: row wrap;
-    padding: 2px 1rem;
+	padding: 4px 1rem;
 	gap: 4px;
-	padding-top: 5px;
+	padding-top: 8px;
 }
 
 .label__li {

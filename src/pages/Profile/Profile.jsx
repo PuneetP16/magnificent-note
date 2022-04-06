@@ -1,8 +1,9 @@
-import React from 'react'
-import "./Profile.css"
+import React from "react";
+import { useDocumentTitle } from "../../customHooks";
+import "./Profile.css";
 
 export const Profile = () => {
-  return (
-    <div>Profile</div>
-  )
-}
+	useDocumentTitle("Profile | MS");
+
+	return <div>Profile</div>;
+};
