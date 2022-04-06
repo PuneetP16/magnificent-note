@@ -20,7 +20,7 @@ export const Archive = () => {
 					</NoteListWrapper>
 				</>
 			) : (
-				<div className="empty_list archive_list">{bxIcons.archive}</div>
+				<div className="empty_list archive_list center">{bxIcons.archive}</div>
 			)}
 		</section>
 	);

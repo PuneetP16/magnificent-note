@@ -130,7 +130,10 @@ export const NoteEditor = () => {
 					</form>
 				</div>
 				<div className="note__footer">
-					<div className="note__created_date">Date: {dateCreated}</div>
+					<div className="note__created_date">
+						<span className="date_label">Date: </span>
+						{dateCreated}
+					</div>
 					<select
 						onChange={noteInputHandler}
 						className="note_label__input select select--filter_by"
@@ -148,13 +151,13 @@ export const NoteEditor = () => {
 						<ColorPalette onClickSetColor={(e) => setColor(e)} />
 
 						<button
-							className="btn_note__cta btn__label"
+							className="btn_note__cta btn__label note__blue"
 							onMouseEnter={() => setShowLabel(true)}
 							onMouseLeave={() => setShowLabel(false)}
 						>
 							{bxIcons.label}
 						</button>
-						{showLabel ? <NoteLabel /> : null}
+						{showLabel ? <NoteLabel setShowLabel={setShowLabel}/> : null}
 
 						<button onClick={saveNote} className="btn_note__cta btn__trash_alt">
 							<IcRoundAddCircleOutline />

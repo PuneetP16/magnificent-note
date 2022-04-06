@@ -66,7 +66,6 @@ export const SignUp = () => {
 				dispatch,
 			});
 		} else {
-			console.log("error");
 			setAlert((a) => ({
 				...a,
 				visibility: true,
