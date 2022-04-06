@@ -14,8 +14,8 @@ export const Label = () => {
 	const { noteList, labelsList } = noteState;
 
 	return (
-		<div className="note_lisiting_section">
-			<main className="note_lisiting_section">
+		<div className="home_page">
+			<main className="main--home_page">
 				{labelsList.length > 1 ? (
 					labelsList.map((label, index) => {
 						const filteredLabelList = noteList.filter((note) =>
@@ -36,7 +36,7 @@ export const Label = () => {
 						);
 					})
 				) : (
-					<div className="empty_list trash_list center">{bxIcons.label}</div>
+					<div className="empty_list trash_list">{bxIcons.label}</div>
 				)}
 			</main>
 		</div>

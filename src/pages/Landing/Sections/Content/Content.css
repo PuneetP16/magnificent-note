@@ -54,12 +54,3 @@
 	color: var(--COLOR-PRIMARY-DARK-THEME);
 	background-color: inherit;
 }
-
-.hero__mobile {
-	display: none;
-}
-
-.landing__CTA {
-	display: flex;
-	flex-flow: column nowrap;
-}

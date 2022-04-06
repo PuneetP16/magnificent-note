@@ -17,8 +17,8 @@ export const MagnificentProvider = ({ children }) => {
 	return (
 		<MagnificentContext.Provider value={value}>
 			<BrowserRouter>
-				<FilterProvider>
-					<ScrollToTopProvider>
+				<ScrollToTopProvider>
+					<FilterProvider>
 						<AuthProvider>
 							<UserProvider>
 								<NoteProvider>
@@ -28,8 +28,8 @@ export const MagnificentProvider = ({ children }) => {
 								</NoteProvider>
 							</UserProvider>
 						</AuthProvider>
-					</ScrollToTopProvider>
-				</FilterProvider>
+					</FilterProvider>
+				</ScrollToTopProvider>
 			</BrowserRouter>
 		</MagnificentContext.Provider>
 	);

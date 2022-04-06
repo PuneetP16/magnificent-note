@@ -66,7 +66,7 @@ export const NoteProvider = ({ children }) => {
 
 			noteDispatch({ type: "UPDATE", payload: output });
 		} catch (error) {
-			console.log("from updateNote", error);
+			console.log("from addToNoteList", error);
 		}
 	};
 
@@ -83,7 +83,7 @@ export const NoteProvider = ({ children }) => {
 
 			noteDispatch({ type: "DELETE", payload: output, note: note });
 		} catch (error) {
-			console.log("from deleteNote", error);
+			console.log("from addToNoteList", error);
 		}
 	};
 
@@ -99,7 +99,7 @@ export const NoteProvider = ({ children }) => {
 
 			noteDispatch({ type: "RESTORE", payload: output, note: note });
 		} catch (error) {
-			console.log("from restoreNote", error);
+			console.log("from addToNoteList", error);
 		}
 	};
 
@@ -118,7 +118,7 @@ export const NoteProvider = ({ children }) => {
 
 			noteDispatch({ type: "ARCHIVE", payload: output, notes: notes });
 		} catch (error) {
-			console.log("from archiveNote", error);
+			console.log("from addToNoteList", error);
 		}
 	};
 
@@ -139,7 +139,7 @@ export const NoteProvider = ({ children }) => {
 				note: note,
 			});
 		} catch (error) {
-			console.log("from deleteArchivedNote", error);
+			console.log("from addToNoteList", error);
 		}
 	};
 
@@ -150,7 +150,7 @@ export const NoteProvider = ({ children }) => {
 			type: "SET_LABELS_LIST",
 			payload: noteList,
 		});
-	}, [noteDispatch, noteList]);
+	}, [noteList]);
 
 	// Note services END
 

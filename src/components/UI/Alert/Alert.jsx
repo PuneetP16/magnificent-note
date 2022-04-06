@@ -12,14 +12,14 @@ export const Alert = ({ alert, setAlert }) => {
 	const { text, visibility, type } = alert;
 
 	useEffect(() => {
-		const timeOutId = setTimeout(() => {
+		const timerVar = setTimeout(() => {
 			setAlert((s) => ({
 				...s,
 				visibility: false,
 			}));
 		}, 2000);
 
-		return () => clearTimeout(timeOutId);
+		return () => clearTimeout(timerVar);
 	}, [setAlert, alert.visibility]);
 
 	return visibility ? (

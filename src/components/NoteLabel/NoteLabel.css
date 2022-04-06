@@ -3,17 +3,9 @@
 }
 
 .note_label__form {
-	/* position: absolute;
-	top: 6px;
-	right: 12.5rem; */
-
 	position: absolute;
 	top: 6px;
-	right: 1.5rem;
-	border: 1px solid var(--COLOR-TXT);
-	border-radius: 8px;
-	z-index: var(--z-index-4);
-	outline: var(--COLOR-TXT);
+	right: 12.5rem;
 }
 
 .note .note_label__input {

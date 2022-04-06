@@ -21,7 +21,7 @@ export const Trash = () => {
 					</NoteListWrapper>
 				</>
 			) : (
-				<div className="empty_list trash_list center">{bxIcons.trashAlt}</div>
+				<div className="empty_list trash_list">{bxIcons.trashAlt}</div>
 			)}
 		</section>
 	);

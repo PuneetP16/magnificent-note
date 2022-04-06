@@ -1,9 +1,8 @@
 import { Navigate, Route, Routes, useLocation } from "react-router-dom";
 import "./App.css";
-import "./responsive.css";
 import { MockBee } from "./backend/mockdocs/MockBee";
 import { MockAPI } from "./backend/mockdocs/MockMan";
-import { Aside, AsideMobile, Footer, Header, Loader } from "./components";
+import { Aside, Footer, Header, Loader } from "./components";
 import { useAuth, useLoader } from "./contexts";
 import {
 	Archive,
@@ -25,25 +24,19 @@ function App() {
 	const isLandingPage = pathname === "/";
 
 	const isAuthPage = pathname === "/login" || pathname === "/signup";
+
 	const isNotFoundPage = pathname === "/pagenotfound";
 
 	const injectPageCss = () => {
-		if (isNotFoundPage) {
-			return "not_found_page";
-		}
-		if (isAuthPage) {
-			return "auth";
-		}
-		if (isLandingPage) {
-			return "landing";
-		}
-		return "home";
+		if (isNotFoundPage) return "not_found_page";
+		if (isLandingPage) return "landing";
+		if (isAuthPage) return "auth";
 	};
 
 	return (
 		<div className={`App body ${injectPageCss()}`}>
 			{pathname !== "/pagenotfound" && !isLandingPage && <Header />}
-
+			
 			{isAuthPage || isLandingPage || isNotFoundPage ? null : <Aside />}
 			<Routes>
 				<Route path="/" element={<Landing />} />
@@ -68,7 +61,6 @@ function App() {
 				<Route path="/pagenotfound" element={<NotFound />} />
 				<Route path="*" element={<Navigate to="/pagenotfound" replace />} />
 			</Routes>
-			{isAuthPage || isLandingPage || isNotFoundPage ? null : <AsideMobile />}
 			{(pathname !== "/pagenotfound" || (pathname !== "/login" && loader)) &&
 				!isLandingPage && <Footer />}
 			{loader && <Loader />}

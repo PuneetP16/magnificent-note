@@ -73,11 +73,7 @@ export const noteReducer = (noteState, action) => {
 				...noteObj,
 				labels: [...noteObj.labels].filter((label) => label !== payload),
 			};
-			labelsList = updateLabelsList(
-				[...noteList, noteObj],
-				trashList,
-				archiveList
-			);
+			labelsList = updateLabelsList([...noteList, noteObj], archiveList);
 			return { noteObj, noteList, trashList, archiveList, labelsList };
 
 		case "SET_LABELS_LIST":

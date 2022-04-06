@@ -3,14 +3,10 @@ import { useState } from "react";
 import { useNote } from "../../contexts";
 import "./NoteLabel.css";
 
-export const NoteLabel = ({ setShowLabel }) => {
-	const { noteDispatch, noteState } = useNote();
-
-	const {
-		noteObj: { noteColor },
-	} = noteState;
-
+export const NoteLabel = () => {
+	const { noteDispatch } = useNote();
 	const [noteLabel, setNoteLabel] = useState("");
+
 
 	const noteLabelHandler = (e) => {
 		setNoteLabel(e.target.value.toLowerCase());
@@ -30,12 +26,7 @@ export const NoteLabel = ({ setShowLabel }) => {
 
 	return (
 		<>
-			<form
-				onSubmit={setNoteLabelHandler}
-				className={`note_label__form ${noteColor}`}
-				onMouseEnter={() => setShowLabel(true)}
-				onMouseLeave={() => setShowLabel(false)}
-			>
+			<form onSubmit={setNoteLabelHandler} className="note_label__form">
 				<input
 					autoFocus
 					type="text"

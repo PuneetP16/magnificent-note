@@ -2,7 +2,6 @@ import { useFilter, useNote } from "../../contexts";
 import { bxIcons } from "../../data/icons";
 import { Filteritem } from "../FilterItem/Filteritem";
 import "./FilterPanel.css";
-import "./FilterPanelMobile.css";
 
 export const FilterPanel = () => {
 	const { sortByDate, byPriority, filterDispatch, selectedLabel } = useFilter();
@@ -18,7 +17,6 @@ export const FilterPanel = () => {
 		"Medium Priority",
 		"Low Priority",
 	];
-
 	const filterOptionsLabel =
 		labelsList.length > 0 ? labelsList : ["Filter by label"];
 

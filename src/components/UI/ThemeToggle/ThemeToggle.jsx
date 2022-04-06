@@ -1,10 +1,9 @@
 import { useTheme } from "../../../contexts";
 import { bxIcons } from "../../../data/icons";
 import "./Theme.css";
-
 export const ThemeToggle = () => {
 	const { theme, themeHandler } = useTheme();
-	
+
 	return (
 		<>
 			<button
