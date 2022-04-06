@@ -1,5 +1,7 @@
 import { Link } from "react-router-dom";
 import { useAuth } from "../../../../contexts";
+import hero from "../../../../data/image/hero.svg";
+
 import "./Content.css";
 
 export const Content = () => {
@@ -14,6 +16,7 @@ export const Content = () => {
 			<div className="app_name h1">
 				<span className="color--primary">Magnificent</span> Notes
 			</div>
+			<img className="hero_img hero__mobile" src={hero} alt="hero" />
 			<div className="app_tagline h4">
 				Meet your modern
 				<br />
@@ -23,13 +26,16 @@ export const Content = () => {
 				Manage your daily tasks and workflow in a modern way and boost your
 				efficiency without any efforts
 			</div>
-
-			<Link to={getLinkPath} className="btn btn--primary auth_btn">
-				{getBtnText}
-			</Link>
-			<Link to="/signup" className="authlink link_reset h6">
-				{isAuth ? null : "Sign up for new account"}
-			</Link>
+			<div className="landing__CTA">
+				<Link to={getLinkPath} className="btn btn--primary auth_btn">
+					{getBtnText}
+				</Link>
+				{isAuth ? null : (
+					<Link to="/signup" className="authlink link_reset h6">
+						Sign Up for new account
+					</Link>
+				)}
+			</div>
 		</section>
 	);
 };

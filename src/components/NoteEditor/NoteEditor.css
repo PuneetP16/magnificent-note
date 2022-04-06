@@ -50,7 +50,6 @@
 .note__heading:focus,
 .note__textarea:focus,
 .select--filter_by:focus {
-	/* border: 0; */
 	background-color: inherit;
 	font-weight: 500;
 }

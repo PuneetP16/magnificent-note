@@ -1,5 +1,6 @@
 export { Alert } from "./UI/Alert/Alert";
 export { Aside } from "./UI/Aside/Aside";
+export { AsideMobile } from "./UI/Aside/AsideMobile";
 export { ColorPalette } from "./ColorPalette/ColorPalette";
 export { CTA } from "./UI/Header/CTA/CTA";
 export { Footer } from "./UI/Footer/Footer";

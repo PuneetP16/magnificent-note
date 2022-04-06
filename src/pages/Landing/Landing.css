@@ -28,7 +28,6 @@
 	flex-flow: row nowrap;
 }
 
-
 .theme_Btn {
 	position: absolute;
 	top: 2rem;
@@ -37,4 +36,75 @@
 
 .theme_Btn .bx {
 	font-size: 4rem;
+}
+
+/* Media Query for Landing Page */
+
+@media only screen and (max-width: 900px) {
+}
+
+@media only screen and (max-width: 780px) {
+
+	body .hero__mobile {
+		display: block;
+	}
+
+	body .hero__desktop {
+		display: none;
+	}
+
+	body .auth_btn {
+		padding: 8px 4rem;
+		font-size: 2rem;
+		margin-left: 0rem;
+	}
+
+	body .content_section {
+		display: flex;
+		flex-flow: column nowrap;
+		padding: 2rem;
+		gap: 1.5rem;
+		height: fit-content;
+	}
+
+	body .app_name {
+		font-size: 3.6rem;
+		margin-bottom: 0;
+	}
+
+	body .app_tagline {
+		margin-bottom: 0;
+	}
+
+	body .app_decription {
+		margin-bottom: 0;
+	}
+
+	body .hero_img {
+		height: 62vh;
+	}
+
+	body .landing__CTA {
+		display: flex;
+		flex-flow: column nowrap;
+		align-items: center;
+		width: 100%;
+		margin: 0 auto;
+	}
+
+	body .theme_Btn {
+		top: 1rem;
+		right: 1rem;
+	}
+	
+}
+
+@media only screen and (max-width: 500px) {
+}
+
+@media only screen and (max-width: 400px) {
+	body .app_name {
+		font-size: 3.4rem;
+		margin-bottom: 0;
+	}
 }
