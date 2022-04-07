@@ -3,7 +3,7 @@ import "./App.css";
 import "./responsive.css";
 import { MockBee } from "./backend/mockdocs/MockBee";
 import { MockAPI } from "./backend/mockdocs/MockMan";
-import { Aside, AsideMobile, Footer, Header, Loader } from "./components";
+import { Aside, AsideMobile, Footer, Header, Loader, SearchBoxMobile } from "./components";
 import { useAuth, useLoader } from "./contexts";
 import {
 	Archive,
@@ -45,6 +45,8 @@ function App() {
 			{pathname !== "/pagenotfound" && !isLandingPage && <Header />}
 
 			{isAuthPage || isLandingPage || isNotFoundPage ? null : <Aside />}
+			<SearchBoxMobile />
+
 			<Routes>
 				<Route path="/" element={<Landing />} />
 				<Route path="/mockbee" element={<MockBee />} />
@@ -60,6 +62,7 @@ function App() {
 				<Route path="/loader" element={<Loader />} />
 
 				<Route path="/home" element={<Home />} />
+				<Route path="/home/search" element={<Home />} />
 				<Route path="/label" element={<Label />} />
 				<Route path="/archive" element={<Archive />} />
 				<Route path="/trash" element={<Trash />} />

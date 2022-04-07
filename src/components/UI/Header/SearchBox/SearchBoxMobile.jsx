@@ -4,11 +4,12 @@ import { useEffect, useState } from "react";
 import { useFilter } from "../../../../contexts";
 import "./SearchBox.css";
 
-export const SearchBox = () => {
+export const SearchBoxMobile = () => {
 	const { pathname } = useLocation();
 	const visibility = (() =>
-		pathname === "/login" || pathname === "/signup" ? "invisible" : "")();
-
+		pathname === "/login" || pathname === "/signup" || pathname === "/"
+			? "invisible"
+			: "")();
 	const { filterDispatch, initialFilterState } = useFilter();
 
 	const [query, setQuery] = useState("");
@@ -40,7 +41,7 @@ export const SearchBox = () => {
 	return (
 		<form
 			onSubmit={passQuery}
-			className={`search_box ${visibility} search_on_header`}
+			className={`${visibility} search_on_mobile`}
 			method="get"
 		>
 			<input
