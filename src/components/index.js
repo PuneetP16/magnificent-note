@@ -15,6 +15,7 @@ export { NoteLabel } from "./NoteLabel/NoteLabel";
 export { NoteListing } from "./NoteListing/NoteListing";
 export { NoteListWrapper } from "./NoteListWrapper/NoteListWrapper";
 export { SearchBox } from "./UI/Header/SearchBox/SearchBox";
+export { SearchBoxMobile } from "./UI/Header/SearchBox/SearchBoxMobile";
 export { ThemeToggle } from "./UI/ThemeToggle/ThemeToggle";
 export { NoteLabelItem } from "./NoteLabelItem/NoteLabelItem";
 export { FilterPanel } from "./FilterPanel/FilterPanel";
