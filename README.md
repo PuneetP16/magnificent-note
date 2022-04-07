@@ -1,70 +1,141 @@
-# Getting Started with Create React App
+# Magnificent Store in React
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Magnificent Note is a Note App, where users can create, save, edit, archive and delete note.
 
-## Available Scripts
+## Authors
 
-In the project directory, you can run:
+- [@Puneet](https://github.com/PuneetP16)
 
-### `yarn start`
+## WEBSITE VIDEO DEMO
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+### Desktop
+https://user-images.githubusercontent.com/91944618/162269058-cc081966-f444-4d25-badb-1358181baa51.mp4
+## Mobile Responsive
+https://user-images.githubusercontent.com/91944618/162269119-a3b0316c-8d68-4f4b-8f14-ef85af5c8ce1.mp4
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+## Live App link
 
-### `yarn test`
+- [Magnificent Note](https://magnificent-note.netlify.app/)
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Technologies used
 
-### `yarn build`
+- HTML
+- CSS
+- JavaScript
+- ReactJS
+- Mockbee (for mock backend)
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Features and Functionalities
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### 1. Landing page :
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- Login button
+- Signup button
+- Dark Mode Toggle Button
 
-### `yarn eject`
+### 2. Home page :
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+#### Note Editor:
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+    Create a note with title, body, label, and color (on selecting from the color palette)
+    - Add color to note
+    - Add tags to note
+    - Add priority to note
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+#### Rich Text Editor integrated :
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+    - Different text styles
+    - Add Link/URL to notes
+    - Add Images to notes
+    - More styling tools
 
-## Learn More
+#### Filter Panel:
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+    There are two variant one is visible on desktop screens and another which has filter floating icon visible on mobile screen
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+    - Filter and/or sort notes by:
+    - Filter by tags
+    - Search by note title or content
+    - Sort by creation date
+    - Sort by Priority
 
-### Code Splitting
+### 3. Label Page :
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+- All the notes are listed according to label category.
 
-### Analyzing the Bundle Size
+### 4. Archive Page :
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+- Consist the notes which are archived from home page.
 
-### Making a Progressive Web App
+### 4. Trash Page :
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+- Consist the notes which are Trashed from home page.
 
-### Advanced Configuration
+### 6. Sign Up page -
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+- Input first and last name
+- Input email address
+- Input Password and verify password by click show password button
+- User agreement checkbox
+- Create new account button
+- Already have an account button
 
-### Deployment
+### 7. Login page -
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+- Input Username
+- Input password
+- Remember me option (ONLY UI)
+- Forgot password option (ONLY UI)
+- Login button
+- Dummy login data preloaded
+- Create a New Account button
 
-### `yarn build` fails to minify
+### 8. Log out button
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+### 9. Search -
+
+- Search any note by clicking on the Search icon in the Header when on the homepage.
+
+- When on the homepage page, the search works dynamically with the key presses no need to press the search icon.
+
+- the Note is searched for the title, body, and label text.
+
+### 10. Loading & Alerts/Toasts
+
+- User is notified when the password or email is wrong.
+- Loader is displayed for each API call, add to cart, remove from cart, move to wishlist, and for the update in quantity
+
+### 11. Responsiveness
+
+- All pages are made responsive with respect to mobile screens with Width greater than 320px
+- Filter Panel, Header/NavBar, and SearchBar are also made responsive on mobile screens.
+
+
+### 12. Dark Mode Toggle
+
+- Theme can be toggled between light mode and dark mode by clicking the toggle located at the top-right corner of every page.
+
+- Theme will remain persistent between different browser sessions. (Implemented local storage to store theme memory)
+
+## **How to run this app Locally**
+
+To run this app locally on your machine, clone the repo to your local machine.
+
+1. `git clone https://github.com/PuneetP16/magnificent-note.git`
+2. `cd magnificent-store-react`
+   In the project directory, you can run
+3. `npm install`
+4. `npm start`
+
+This will start the app in development mode.\
+Open [http://localhost:3000](http://localhost:3000) to view it in your browser.\
+Make sure you have access to internet to make use of the API call inside the App.
+
+<br>
+
+#### 👨‍💻 Lets connect !
+
+<br>
+
+<a href="https://twitter.com/Puneet16_/"><img src="https://img.shields.io/badge/Twitter-1DA1F2?style=for-the-badge&logo=twitter&logoColor=white" width="93px"/></a>
+<a href="https://www.linkedin.com/in/Puneet16/"><img src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white" width="100px"/></a>
