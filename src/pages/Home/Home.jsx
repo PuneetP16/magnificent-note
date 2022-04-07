@@ -1,4 +1,5 @@
 import React from "react";
+import { useState } from "react";
 import {
 	FilterPanel,
 	NoteEditor,
@@ -28,6 +29,23 @@ export const Home = () => {
 	filteredList = filterByLabel(filteredList, selectedLabel);
 
 	filteredList = sortItByDate(filteredList, sortByDate);
+	const [showFilter, setShowFilter] = useState(false);
+
+	const closeFilter = () => {
+		showFilter && setShowFilter((visible) => !visible);
+	};
+
+	const toggleFilterPanel = (e) => {
+		const isFilterPanelBtn = e.currentTarget.className === "bx bx-filter";
+		if (isFilterPanelBtn) setShowFilter(false);
+
+		if (
+			e.currentTarget.className ===
+			"filter__icon btn btn--icon btn--primary btn--circular btn--floating"
+		)
+			setShowFilter(true);
+	};
+
 	return (
 		<div className="home_page">
 			<main className="main--home_page">
@@ -35,6 +53,28 @@ export const Home = () => {
 					<div className="note_container">
 						<NoteEditor />
 					</div>
+
+					<div
+						onClick={closeFilter}
+						className={`filter__modal ${showFilter ? "modal_container" : ""}`}
+						style={{ display: "flex" }}
+					>
+						<button
+							onClick={toggleFilterPanel}
+							className="filter__icon btn btn--icon btn--primary btn--circular btn--floating"
+						>
+							<i className="bx bx-filter"></i>
+						</button>
+						{showFilter ? (
+							<div
+								onClick={(e) => e.stopPropagation()}
+								className="filter_panel__wrapper filter_panel_mobile"
+							>
+								<FilterPanel />
+							</div>
+						) : null}
+					</div>
+
 					<div className="filter_panel__wrapper">
 						<FilterPanel />
 					</div>

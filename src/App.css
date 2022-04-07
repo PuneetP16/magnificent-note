@@ -15,7 +15,7 @@
 
 .landing {
 	grid-template-columns: 1fr;
-	grid-template-rows: 100vh;
+	grid-template-rows: 1fr;
 	grid-template-areas: "main";
 }
 
@@ -36,4 +36,17 @@
 
 .main {
 	grid-area: main;
+}
+
+.home {
+	background-color: var(--COLOR-BG);
+	display: grid;
+	min-height: 100vh;
+	transition: all 0.3s ease-in;
+	grid-template-columns: 35rem 1fr;
+	grid-template-rows: 7rem 1fr 5.2rem;
+	grid-template-areas:
+		"header header"
+		"aside main"
+		"footer footer";
 }
