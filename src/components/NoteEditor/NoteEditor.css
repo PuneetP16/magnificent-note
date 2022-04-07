@@ -185,10 +185,3 @@
 	/* Microsoft Edge */
 	color: var(--COLOR-TXT);
 }
-
-@media only screen and (max-width: 470px) {
-	.note__created_date {
-		font-weight: 400;
-		display: none;
-	}
-}

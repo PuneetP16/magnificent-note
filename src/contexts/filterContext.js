@@ -5,7 +5,7 @@ const FilterContext = createContext();
 export const useFilter = () => useContext(FilterContext);
 
 const filterReducer = (
-	{ sortByDate, category, byPriority, selectedLabel, search },
+	{ sortByDate, category, byPriority, selectedLabel },
 	{ type, payload }
 ) => {
 	switch (type) {
@@ -16,7 +16,6 @@ const filterReducer = (
 				byPriority,
 				category,
 				selectedLabel,
-				search,
 			};
 
 		case "BY_PRIORITY":
@@ -26,7 +25,6 @@ const filterReducer = (
 				byPriority,
 				category,
 				selectedLabel,
-				search,
 			};
 
 		case "BY_LABEL":
@@ -36,21 +34,7 @@ const filterReducer = (
 				byPriority,
 				category,
 				selectedLabel,
-				search,
 			};
-
-		case "SEARCH":
-			search = payload;
-			return {
-				sortByDate,
-				byPriority,
-				category,
-				selectedLabel,
-				search,
-			};
-
-		case "RESET":
-			return { ...payload };
 
 		default:
 			return {
@@ -58,7 +42,6 @@ const filterReducer = (
 				byPriority,
 				category,
 				selectedLabel,
-				search,
 			};
 	}
 };
@@ -68,7 +51,6 @@ export const FilterProvider = ({ children }) => {
 		sortByDate: "Newest First",
 		byPriority: "All",
 		selectedLabel: "All",
-		search: "",
 	};
 
 	const [filterState, filterDispatch] = useReducer(
@@ -76,8 +58,7 @@ export const FilterProvider = ({ children }) => {
 		initialFilterState
 	);
 
-	const { sortByDate, category, byPriority, selectedLabel, search } =
-		filterState;
+	const { sortByDate, category, byPriority, selectedLabel } = filterState;
 
 	const value = {
 		filterDispatch,
@@ -86,7 +67,6 @@ export const FilterProvider = ({ children }) => {
 		selectedLabel,
 		byPriority,
 		initialFilterState,
-		search,
 	};
 
 	useEffect(() => {

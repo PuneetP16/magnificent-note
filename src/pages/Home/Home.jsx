@@ -11,40 +11,24 @@ import { useFilter, useNote } from "../../contexts";
 import {
 	filterByLabel,
 	filterByPriority,
-	getSearchedNotes,
 	sortItByDate,
 } from "../../utilities/filterOperations";
 import { useDocumentTitle } from "../../customHooks";
-import { useLocation } from "react-router-dom";
-import { useEffect } from "react";
 
 export const Home = () => {
 	useDocumentTitle("Home | MS");
 
 	const { noteState } = useNote();
-	const { sortByDate, byPriority, selectedLabel, filterDispatch, search } =
-		useFilter();
+	const { sortByDate, byPriority, selectedLabel } = useFilter();
 
 	const { noteList } = noteState;
 	const pinnedList = noteList.filter((note) => note.isPinned);
 	const unPinnedList = noteList.filter((note) => !note.isPinned);
 
-	const location = useLocation();
-	const urlParam = new URLSearchParams(location.search);
-	const searchQuery = urlParam.get("query");
-
-	useEffect(() => {
-		if (searchQuery) {
-			filterDispatch({ type: "SEARCH", payload: searchQuery });
-		}
-	}, [filterDispatch, searchQuery]);
-
 	let filteredList = filterByPriority(unPinnedList, byPriority);
 	filteredList = filterByLabel(filteredList, selectedLabel);
 
 	filteredList = sortItByDate(filteredList, sortByDate);
-	filteredList = getSearchedNotes(filteredList, search);
-
 	const [showFilter, setShowFilter] = useState(false);
 
 	const closeFilter = () => {
@@ -115,14 +99,6 @@ export const Home = () => {
 						</>
 					) : null}
 				</section>
-				<button
-					onClick={() => {
-						window.scroll(0, 0);
-					}}
-					className="scroll_to_top_icon btn btn--icon btn--primary btn--circular btn--floating"
-				>
-					<i className="bx bx-up-arrow-alt"></i>
-				</button>
 			</main>
 		</div>
 	);

@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { useLocation } from "react-router-dom";
 import { ThemeToggle } from "../../ThemeToggle/ThemeToggle";
 import { useAuth } from "../../../../contexts";
+import { bxIcons } from "../../../../data/icons";
 
 export const CTA = () => {
 	const { isAuth, toggleAuth } = useAuth();
@@ -15,19 +16,13 @@ export const CTA = () => {
 			toggleAuth();
 		}
 	};
-	const isLandingPage = (() => pathname === "/")();
 
+	const isLandingPage = (() => pathname === "/")();
 	const isLoginPage = (() => pathname === "/login")();
 	const getBtnName = (() =>
 		isAuth ? "Logout" : pathname === "/login" ? "Sign Up" : "Login")();
 	const getBtnIcon = (() =>
-		isAuth ? (
-			<i className="bx bx-log-out"></i>
-		) : isLoginPage ? (
-			<i className="bx bx-user-plus"></i>
-		) : (
-			<i className="bx bx-log-in"></i>
-		))();
+		isAuth ? bxIcons.logout : isLoginPage ? bxIcons.userPlus : bxIcons.login)();
 	const getLinkPath = (() =>
 		isAuth ? "/" : pathname === "/login" ? "/signup" : "/login")();
 
@@ -36,9 +31,7 @@ export const CTA = () => {
 			{isLandingPage ? null : (
 				<Link
 					onClick={onClickHandler}
-					className={`btn btn--primary btn--icon auth__btn ${
-						isAuth ? "auth__btn--logout" : ""
-					}`}
+					className="btn btn--primary btn--icon"
 					to={getLinkPath}
 				>
 					{getBtnName}

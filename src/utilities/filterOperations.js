@@ -31,14 +31,3 @@ export const filterByLabel = (filteredList, selectedLabel) => {
 	}
 	return filteredList.filter((note) => note.labels.includes(selectedLabel));
 };
-
-export const getSearchedNotes = (filteredList, query) => {
-	if (!query) return filteredList;
-	query = query.toLowerCase();
-	return filteredList.filter(
-		(note) =>
-			note.title.toLowerCase().includes(query) ||
-			note.body.toLowerCase().includes(query) ||
-			note.labels.toString().toLowerCase().includes(query)
-	);
-};
