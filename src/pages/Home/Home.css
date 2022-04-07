@@ -27,3 +27,10 @@
 	gap: 2rem;
 	height: 100%;
 }
+
+.scroll_to_top_icon {
+	position: fixed;
+	bottom: 7rem;
+	right: 1.5rem;
+	z-index: var(--z-index-2);
+}

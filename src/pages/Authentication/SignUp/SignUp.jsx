@@ -148,7 +148,7 @@ export const SignUp = () => {
 						/>
 					</section>
 					<button className="form__signup_btn btn btn--primary">Sign Up</button>
-					<Link className="btn btn--icon" to="/login">
+					<Link className="btn btn--primary btn--icon" to="/login">
 						Already have an Account? Login
 						{bxIcons.rightArrow}
 					</Link>

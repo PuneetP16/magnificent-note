@@ -33,7 +33,7 @@
 .note__palette {
 	position: absolute;
 	display: flex;
-	width: 11rem;
+	width: 13rem;
 	list-style-type: none;
 	flex-flow: row wrap;
 	background-color: var(--COLOR-NOTE-BG);

@@ -42,7 +42,11 @@ export const NoteEditor = () => {
 		});
 	};
 
-	const filterOptionsPriority = ["High Priority", "Low Priority"];
+	const filterOptionsPriority = [
+		"High Priority",
+		"Medium Priority",
+		"Low Priority",
+	];
 
 	const setColor = (e) => {
 		const tagName = e.target.tagName;
@@ -69,6 +73,7 @@ export const NoteEditor = () => {
 				payload: inititalNoteObj,
 			});
 			setBodyText("");
+			setIsEditable(false);
 		} else {
 			setAlert({
 				visibility: true,
@@ -157,7 +162,7 @@ export const NoteEditor = () => {
 						>
 							{bxIcons.label}
 						</button>
-						{showLabel ? <NoteLabel setShowLabel={setShowLabel}/> : null}
+						{showLabel ? <NoteLabel setShowLabel={setShowLabel} /> : null}
 
 						<button onClick={saveNote} className="btn_note__cta btn__trash_alt">
 							<IcRoundAddCircleOutline />
