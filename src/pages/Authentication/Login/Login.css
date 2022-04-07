@@ -49,17 +49,6 @@ a {
 .form__signup_btn {
 	width: 100%;
 }
-
-.form__signup_btn {
-	opacity: 0.9;
-	background: var(--COLOR-LIST-HOVER);
-}
-
-.form__signup_btn:hover {
-	transform: scale(1);
-	opacity: 1;
-}
-
 .form h2 {
 	align-self: center;
 }

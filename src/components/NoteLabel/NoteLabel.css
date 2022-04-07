@@ -26,6 +26,7 @@
 }
 
 .note .select {
-	width: 17ch;
+	min-width: auto;
+	width: fit-content;
 	margin-left: 2rem;
 }

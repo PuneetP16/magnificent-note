@@ -1,60 +1,24 @@
+import { useLocation } from "react-router-dom";
 import { bxIcons } from "../../../../data/icons";
-import { useLocation, useNavigate } from "react-router-dom";
-import { useEffect, useState } from "react";
-import { useFilter } from "../../../../contexts";
 import "./SearchBox.css";
 
 export const SearchBox = () => {
 	const { pathname } = useLocation();
 	const visibility = (() =>
 		pathname === "/login" || pathname === "/signup" ? "invisible" : "")();
-
-	const { filterDispatch, initialFilterState } = useFilter();
-
-	const [query, setQuery] = useState("");
-	const navigate = useNavigate();
-
-	const onChangeSearchHandler = (e) => {
-		setQuery(e.target.value);
-	};
-
-	useEffect(() => {
-		if (query) {
-			filterDispatch({ type: "SEARCH", payload: query });
-		} else {
-			filterDispatch({ type: "RESET", payload: initialFilterState });
-		}
-	}, [query]);
-
-	const passQuery = (e) => {
-		e.preventDefault();
-		if (query) {
-			navigate(`/home/search?query=${query}`);
-			setQuery("");
-		} else {
-			navigate("/home");
-			setQuery("");
-		}
-	};
-
+	const onClickSearchHandler = (e) => e.preventDefault();
 	return (
-		<form
-			onSubmit={passQuery}
-			className={`search_box ${visibility} search_on_header`}
-			method="get"
-		>
+		<form className={`search_box ${visibility}`} method="get">
 			<input
-				type="search"
+				type="text"
 				className="input_box"
 				placeholder="Search for items"
-				required
-				value={query}
-				onChange={onChangeSearchHandler}
+				required=""
 			/>
 
 			<button
 				type="submit"
-				onClick={passQuery}
+				onClick={onClickSearchHandler}
 				className="btn btn--primary btn--icon"
 			>
 				{bxIcons.searchAlt2}

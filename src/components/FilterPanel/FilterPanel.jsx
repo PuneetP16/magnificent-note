@@ -5,13 +5,7 @@ import "./FilterPanel.css";
 import "./FilterPanelMobile.css";
 
 export const FilterPanel = () => {
-	const {
-		sortByDate,
-		byPriority,
-		filterDispatch,
-		selectedLabel,
-		initialFilterState,
-	} = useFilter();
+	const { sortByDate, byPriority, filterDispatch, selectedLabel } = useFilter();
 
 	const {
 		noteState: { labelsList },
@@ -51,21 +45,10 @@ export const FilterPanel = () => {
 
 	return (
 		<form className="filter_panel">
-			<section className="filter__header">
-				<h3 className="h5 filter__head">
-					<span>{bxIcons.filterAlt} </span>
-					Filters
-				</h3>
-				<button
-					onClick={(e) => {
-						e.preventDefault();
-						filterDispatch({ type: "RESET", payload: initialFilterState });
-					}}
-					className="filter--reset"
-				>
-					Clear All
-				</button>
-			</section>
+			<h3 className="h5 filter__head">
+				<span>{bxIcons.filterAlt} </span>
+				Filters
+			</h3>
 			<Filteritem
 				dispatch={dispatchSortByDate}
 				value={sortByDate}

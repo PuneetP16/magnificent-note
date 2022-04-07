@@ -81,10 +81,7 @@ export const Note = ({
 
 						{isTrashPage || isArchivePage ? null : (
 							<button
-								onClick={() => {
-									editNote(note);
-									window.scroll(0, 0);
-								}}
+								onClick={() => editNote(note)}
 								className="btn_note__cta btn__trash_alt"
 							>
 								{bxIcons.edit}

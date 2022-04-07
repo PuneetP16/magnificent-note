@@ -8,7 +8,7 @@
 	padding: 1.2rem 1.5rem;
 	text-align: left;
 	position: absolute;
-	top: 8rem;
+	top: 10rem;
 	right: 1.5rem;
 	z-index: var(--z-index-2);
 }
@@ -21,23 +21,4 @@
 .alert--danger {
 	background-color: #c84949;
 	border: 0;
-}
-
-@media only screen and (max-width: 860px) {
-	.alert {
-		top: 14rem;
-	}
-
-	body .note_editor_section {
-		padding: 1.5rem;
-		padding-bottom: 0;
-	}
-
-	.note_lisiting_section > h3 {
-		text-align: center;
-	}
-
-	.scroll_to_top_icon {
-		bottom: 12rem;
-	}
 }
