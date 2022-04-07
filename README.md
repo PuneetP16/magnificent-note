@@ -103,7 +103,7 @@ https://user-images.githubusercontent.com/91944618/162269119-a3b0316c-8d68-4f4b-
 ### 10. Loading & Alerts/Toasts
 
 - User is notified when the password or email is wrong.
-- Loader is displayed for each API call, add to cart, remove from cart, move to wishlist, and for the update in quantity
+- Loader is displayed for each API call, save, edit, change color, filter, archive, and delete note.
 
 ### 11. Responsiveness
 
