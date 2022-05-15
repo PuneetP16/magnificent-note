@@ -1,4 +1,4 @@
-# Magnificent Store in React
+# Magnificent Note in React
 
 Magnificent Note is a Note App, where users can create, save, edit, archive and delete note.
 
